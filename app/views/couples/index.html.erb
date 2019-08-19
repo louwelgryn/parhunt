@@ -1,0 +1,11 @@
+
+<h1>Parents to rent</h1>
+
+
+<% @couples.each do |couple| %>
+<%= couple.name %>
+<%= couple.nickname %>
+<%= couple.worst_default %>
+<%= couple.best_quality %>
+<%= couple.photo %>
+<% end %>
