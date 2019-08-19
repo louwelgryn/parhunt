@@ -1,0 +1,37 @@
+<h2>Je mets mes parents en location</h2>
+
+<%= simple_form_for @couple do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :nickname %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :description %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :skills %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :best_quality %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :worst_default %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :address %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :price %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Mes ieuv sur les internets", class: "btn btn-primary" %>
+  </div>
+<% end %>
