@@ -1,4 +1,8 @@
 class CouplesController < ApplicationController
+  def index
+    @couples = Couple.all
+  end
+  
   def new
     @couple = Couple.new
   end
