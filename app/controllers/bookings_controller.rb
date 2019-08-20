@@ -3,15 +3,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user = @user
-    @booking.couple = @couple
+    @booking.user_id = current_user
+    @booking.couple = Couple.find(params[:couple_id])
     # Faut il mettre user ou user_id?
 
-    if @booking.save
-      redirect_to dashboard_path
-    else
-      render :new
-    end
+    @booking.save!
+    redirect_to dashboard_path
   end
 
   def update
@@ -20,6 +17,12 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @booking = Booking.new(booking_params)
+    @booking.user = @user
+    @booking.couple = @couple
   end
 
   private
