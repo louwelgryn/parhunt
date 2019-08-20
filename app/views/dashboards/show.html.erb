@@ -7,6 +7,12 @@
 
 <p><%= current_user.fullname %></p>
 
+<% if current_user.photo.file.nil? %>
+  <p>Ajoutez votre trombine :</p>
+<% else %>
+  <%= cl_image_tag current_user.photo %>
+<% end %>
+
 <h2>My parents</h2>
 
 <%= cl_image_tag(current_user.couple.photo, :transformation=>[

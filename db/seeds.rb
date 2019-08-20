@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "destroying all dashboards"
+Dashboard.destroy_all
 puts "destroying all couples"
 Couple.destroy_all
 puts "destroying all users"
@@ -15,37 +17,41 @@ puts "creating user  Michel"
 
 michel = User.new
 michel.fullname ="Michel Delpeche"
-#michel.photo = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1566292945/images%20seed%20parhunt/michel_kogojk.jpg'
+michel.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1566292945/images%20seed%20parhunt/michel_kogojk.jpg'
 michel.email = "micheldelpeche@gmail.com"
 michel.password = "qwerty"
 michel.save!
+michel.dashboard = Dashboard.new
 
 puts "creating user  Jessica"
 
 jessica = User.new
 jessica.fullname ="Jessica Down"
-#jessica.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1566292969/images%20seed%20parhunt/jessica_yayxpz.jpg'
+jessica.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1566292969/images%20seed%20parhunt/jessica_yayxpz.jpg'
 jessica.email = "jessicadown@gmail.com"
 jessica.password = "qwerty"
 jessica.save!
+jessica.dashboard = Dashboard.new
 
 puts "creating user Maxence"
 
 maxence = User.new
 maxence.fullname ="maxence Delpeche"
-#maxence.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1566291615/images%20seed%20parhunt/maxence_mymvmu.jpg'
+maxence.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1566291615/images%20seed%20parhunt/maxence_mymvmu.jpg'
 maxence.email = "maxencedelpeche@gmail.com"
 maxence.password = "qwerty"
 maxence.save!
+maxence.dashboard = Dashboard.new
 
 puts "creating user lou"
 
 lou = User.new
 lou.fullname ="Lou Up"
-#lou.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1566291629/images%20seed%20parhunt/lou_x8trm1.jpg'
+lou.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1566291629/images%20seed%20parhunt/lou_x8trm1.jpg'
 lou.email = "louwelgryn@gmail.com"
 lou.password = "qwerty"
 lou.save!
+lou.dashboard = Dashboard.new
 
 puts "creating couple durand"
 
