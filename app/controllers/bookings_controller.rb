@@ -3,12 +3,10 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user_id = current_user
+    @booking.user = current_user
     @booking.couple = Couple.find(params[:couple_id])
-    # Faut il mettre user ou user_id?
-
     @booking.save!
-    redirect_to dashboard_path
+    redirect_to dashboard_path(current_user.dashboard)
   end
 
   def update
@@ -33,9 +31,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
 
   def booking_params
     params.require(:booking).permit(:user_id, :couple_id, :start_date, :end_date, :review_content, :review_rating, :status)
