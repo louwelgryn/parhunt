@@ -22,7 +22,7 @@
         <% if current_user.nil? %>
           <button type="button" class="btn btn-secondary"><a href="/">Sign in</a></button>
         <% else  %>
-          <%= link_to current_user.fullname, dashboard_path(current_user.dashboard) %>
+          <!-- <%= link_to current_user.fullname, dashboard_path(current_user.dashboard) %> -->
           <img class="avatar" src="<% cl_image_tag current_user.photo %>">
         <% end %>
 
