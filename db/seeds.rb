@@ -5,8 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "destroying all bookings"
-Booking.destroy_all
 puts "destroying all couples"
 Couple.destroy_all
 puts "destroying all users"
@@ -113,5 +111,3 @@ gaillard.remote_photo_url = "https://res.cloudinary.com/duro4nxuo/image/upload/v
 gaillard.save!
 
 puts "Finished !"
-
-
