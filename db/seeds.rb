@@ -6,8 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "destroying all dashboards"
-Dashboard.destroy_all
+
 puts "destroying all couples"
 Couple.destroy_all
 puts "destroying all users"
@@ -21,7 +20,7 @@ michel.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v15
 michel.email = "micheldelpeche@gmail.com"
 michel.password = "qwerty"
 michel.save!
-michel.dashboard = Dashboard.new
+
 
 puts "creating user  Jessica"
 
@@ -31,7 +30,7 @@ jessica.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1
 jessica.email = "jessicadown@gmail.com"
 jessica.password = "qwerty"
 jessica.save!
-jessica.dashboard = Dashboard.new
+
 
 puts "creating user Maxence"
 
@@ -41,7 +40,7 @@ maxence.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v1
 maxence.email = "maxencedelpeche@gmail.com"
 maxence.password = "qwerty"
 maxence.save!
-maxence.dashboard = Dashboard.new
+
 
 puts "creating user lou"
 
@@ -51,7 +50,7 @@ lou.remote_photo_url = 'https://res.cloudinary.com/duro4nxuo/image/upload/v15662
 lou.email = "louwelgryn@gmail.com"
 lou.password = "qwerty"
 lou.save!
-lou.dashboard = Dashboard.new
+
 
 puts "creating couple durand"
 
@@ -114,5 +113,3 @@ gaillard.remote_photo_url = "https://res.cloudinary.com/duro4nxuo/image/upload/v
 gaillard.save!
 
 puts "Finished !"
-
-
