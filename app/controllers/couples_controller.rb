@@ -8,6 +8,7 @@ class CouplesController < ApplicationController
     @booking = Booking.new
   end
 
+
   def new
     @couple = Couple.new
   end

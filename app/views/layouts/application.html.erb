@@ -9,20 +9,42 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
+
   <body>
+
+    <div class="navbar-lewagon">
+      <a href="/"><p>PARHUNT</p></a>
+
+      <div>
+        <button type="button" class="btn btn-danger"> <a href="/couples">All parents</a> </button>
+        <button type="button" class="btn btn-danger"> <a href="/couples/new">Rent your parents</a> </button>
+
+        <% if current_user.nil? %>
+          <button type="button" class="btn btn-secondary"><a href="/">Sign in</a></button>
+        <% else  %>
+          <a href="/dashboard">
+            <img class="avatar" src="<% cl_image_tag current_user.photo %>">
+          </a>
+        <% end %>
+
+      </div>
+    </div>
+
     <%= yield %>
 
-  <div class="footer">
-    <div class="footer-links">
-      <a href="https://github.com/louwelgryn/parhunt" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/lewagonparis/?hl=fr" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://fr-fr.facebook.com/lewagon/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.linkedin.com/school/le-wagon/" target="_blank"><i class="fab fa-linkedin"></i></a>
+
+    <div class="footer">
+      <div class="footer-links">
+        <a href="https://github.com/louwelgryn/parhunt" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/lewagonparis/?hl=fr" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://fr-fr.facebook.com/lewagon/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/school/le-wagon/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-copyright">
+        With <i class="fas fa-heart"></i> from Parhunt
+      </div>
     </div>
-    <div class="footer-copyright">
-      With <i class="fas fa-heart"></i> from Parhunt
-    </div>
-  </div>
+
 
 
     <%= javascript_include_tag 'application' %>
