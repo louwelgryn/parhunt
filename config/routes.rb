@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create, :update]
   end
 
-  resources :dashboards, only: [:show]
+  get '/dashboard', to: 'users#dashboard'
 end

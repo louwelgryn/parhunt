@@ -17,15 +17,19 @@
 
 <h2>My parents</h2>
 
-<%= cl_image_tag(current_user.couple.photo, :transformation=>[
-  {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-  {:width=>80, :crop=>"scale"}
-  ]) %>
+  <% if current_user.couple.nil? %>
+    <%= link_to 'Add my parents',  new_couple_path %>
+  <% else %>
+    <%= cl_image_tag(current_user.couple.photo, :transformation=>[
+    {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+    {:width=>80, :crop=>"scale"}
+    ]) %>
 
-<p><%= current_user.couple.name %></p>
+  <p><%= current_user.couple.name %></p>
 
-<% current_user.couple.bookings.each do |booking| %>
-  <p><%= booking.status %></p>
+  <% current_user.couple.bookings.each do |booking| %>
+    <p><%= booking.status %></p>
+  <% end %>
 <% end %>
 
 <h2>My reservations</h2>
@@ -33,3 +37,5 @@
 <% current_user.bookings.each do |booking| %>
   <p><%= booking.start_date %></p>
 <% end %>
+
+
