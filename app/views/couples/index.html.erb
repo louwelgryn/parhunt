@@ -1,19 +1,21 @@
 
 <h1>Parents to rent</h1>
 
-
-<div class="row">
-  <% @couples.each do |couple| %>
-  <div class="col-4">
-    <div class="couples-card">
-      <%= couple.name %>
-     <p>Surnom: <%= couple.nickname %> </p>
-       <p>Pire défaut: <%= couple.worst_default %> </p>
-      <p>Meilleure qualité:<%= couple.best_quality %> </p>
-      <%= cl_image_tag couple.photo, height: 300, width: 400, crop: :fill %>
+<div class="container">
+  <div class="row">
+    <% @couples.each do |couple| %>
+    <div class="col-4">
+      <div class="couples-card">
+        <%= couple.name %>
+       <p>Surnom: <%= couple.nickname %> </p>
+         <p>Pire défaut: <%= couple.worst_default %> </p>
+        <p>Meilleure qualité:<%= couple.best_quality %> </p>
+        <%= cl_image_tag couple.photo, height: 300, width: 400, crop: :fill %>
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
+
 </div>
 
 
