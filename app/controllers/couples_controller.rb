@@ -3,6 +3,12 @@ class CouplesController < ApplicationController
     @couples = Couple.all
   end
 
+  def show
+    @couple = Couple.find(params[:id])
+    @booking = Booking.new
+  end
+
+
   def new
     @couple = Couple.new
   end
