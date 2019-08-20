@@ -3,8 +3,16 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.couple = Couple.find(params[:couple_id])
-    @booking.save!
-    redirect_to dashboard_path
+    @couple = Couple.find(params[:couple_id])
+    array = @couple.bookings.map do |booking|
+      (@booking.end_date < booking.start_date) || (booking.end_date < @booking.start_date)
+      end
+     if array.all? { |elem| elem == true }
+        @booking.save!
+        redirect_to dashboard_path
+      else
+        redirect_to couples_path
+     end
   end
 
   def update
