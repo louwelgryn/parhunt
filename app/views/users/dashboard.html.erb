@@ -36,9 +36,9 @@
 
 <div>
   <h3>Upcoming reservations</h3>
-  <% @old_bookings.each do |old_booking| %>
-    <%= old_booking.couple.name %>
-    <p> Du <%= old_booking.couple.start_date %> au <%= old_booking.couple.end_date %></p>
+  <% @upcoming_bookings.each do |upcoming_booking| %>
+    <%= upcoming_booking.couple.name %>
+    <p> Du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %></p>
   <% end %>
 </div>
 
@@ -48,7 +48,7 @@
   <% @old_bookings_to_review.each do |old_booking_to_review| %>
 
     <p>Vous avez réservé avec <%= old_booking_to_review.couple.name %></p>
-    <p>Du <%= old_booking_to_review.couple.start_date %> au <%= old_booking_to_review.couple.end_date %></p>
+    <p>Du <%= old_booking_to_review.start_date %> au <%= old_booking_to_review.end_date %></p>
 
     <p>Reviewez ces parents:</p>
     <%= simple_form_for [old_booking_to_review.couple, old_booking_to_review] do |f| %>
