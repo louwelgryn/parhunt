@@ -1,6 +1,6 @@
 <h2>Je mets mes parents en location</h2>
 
-<%= simple_form_for @couple do |f| %>
+<%= simple_form_for (@couple) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
