@@ -11,6 +11,20 @@
   </head>
   <body>
     <%= yield %>
+
+  <div class="footer">
+    <div class="footer-links">
+      <a href="https://github.com/louwelgryn/parhunt" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/lewagonparis/?hl=fr" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://fr-fr.facebook.com/lewagon/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.linkedin.com/school/le-wagon/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+      With <i class="fas fa-heart"></i> from Parhunt
+    </div>
+  </div>
+
+
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
