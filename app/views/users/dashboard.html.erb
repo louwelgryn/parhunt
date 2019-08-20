@@ -1,41 +1,53 @@
 <h1>My dashboard</h1>
 
-<%= cl_image_tag(current_user.photo, :transformation=>[
-  {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-  {:width=>40, :crop=>"scale"}
-  ]) %>
-
 <p><%= current_user.fullname %></p>
-
-<%= link_to 'Edit profile',  edit_user_registration_path %>
 
 <% if current_user.photo.file.nil? %>
   <p>Ajoutez votre trombine :</p>
 <% else %>
-  <%= cl_image_tag current_user.photo %>
+  <%= cl_image_tag(current_user.photo, :transformation=>[
+    {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+    {:width=>200, :crop=>"scale"}
+  ]) %>
 <% end %>
+
+<p><%= link_to 'Edit profile',  edit_user_registration_path %></p>
 
 <h2>My parents</h2>
 
-  <% if current_user.couple.nil? %>
-    <%= link_to 'Add my parents',  new_couple_path %>
-  <% else %>
-    <%= cl_image_tag(current_user.couple.photo, :transformation=>[
+<% if current_user.couple.nil? %>
+  <%= link_to 'Add my parents', new_couple_path %>
+<% else %>
+  <%= cl_image_tag(current_user.couple.photo, :transformation=>[
     {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-    {:width=>80, :crop=>"scale"}
-    ]) %>
+    {:width=>200, :crop=>"scale"}
+  ]) %>
+  <p>Les <%= current_user.couple.name %> 😊</p>
 
-  <p><%= current_user.couple.name %></p>
-
-  <% current_user.couple.bookings.each do |booking| %>
-    <p><%= booking.status %></p>
+  <% unless current_user.couple.bookings.first.nil?  %>
+    <p>Leurs réservations :</p>
+    <% current_user.couple.bookings.each do |booking| %>
+      <hr>
+      <p>Réservés par <%= booking.user.fullname %> pour le <%= booking.start_date %></p>
+      <%= simple_form_for [current_user.couple, booking] do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="form-inputs">
+          <%= f.input :status, :collection => Booking::STATUS %>
+        </div>
+        <div class="form-inputs">
+          <%= f.submit %>
+        </div>
+      <% end %>
+      <hr>
+    <% end %>
   <% end %>
 <% end %>
 
 <h2>My reservations</h2>
 
 <% current_user.bookings.each do |booking| %>
-  <p><%= booking.start_date %></p>
+  <p>Les <%= booking.couple.name %>, du <%= booking.start_date %> au <%= booking.start_date %></p>
 <% end %>
 
 
