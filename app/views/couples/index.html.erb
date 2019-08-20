@@ -8,9 +8,10 @@
       <div class="couples-card">
         <%= couple.name %>
        <p>Surnom: <%= couple.nickname %> </p>
-         <p>Pire défaut: <%= couple.worst_default %> </p>
+        <p>Pire défaut: <%= couple.worst_default %> </p>
         <p>Meilleure qualité:<%= couple.best_quality %> </p>
         <%= cl_image_tag couple.photo, height: 300, width: 400, crop: :fill %>
+        <%= link_to 'see more', couple_path(couple) %>
       </div>
     </div>
     <% end %>
