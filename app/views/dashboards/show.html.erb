@@ -7,6 +7,8 @@
 
 <p><%= current_user.fullname %></p>
 
+<%= link_to 'Edit profile',  edit_user_registration_path %>
+
 <% if current_user.photo.file.nil? %>
   <p>Ajoutez votre trombine :</p>
 <% else %>
