@@ -22,16 +22,18 @@
         <% if current_user.nil? %>
           <button type="button" class="btn btn-secondary"><a href="/">Sign in</a></button>
         <% else  %>
-          <a href="/dashboard">
-            <img class="avatar" src="<% cl_image_tag current_user.photo %>">
-          </a>
+          <%= link_to current_user.fullname, dashboard_path(current_user.dashboard) %>
+          <img class="avatar" src="<% cl_image_tag current_user.photo %>">
         <% end %>
 
       </div>
     </div>
 
-    <%= yield %>
+    <div class="container">
 
+      <%= yield %>
+
+    </div>
 
     <div class="footer">
       <div class="footer-links">
@@ -44,8 +46,6 @@
         With <i class="fas fa-heart"></i> from Parhunt
       </div>
     </div>
-
-
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
