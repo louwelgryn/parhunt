@@ -1,6 +1,4 @@
 class BookingsController < ApplicationController
-  before_action :set_current_couple, :current_user
-
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
@@ -14,10 +12,11 @@ class BookingsController < ApplicationController
         redirect_to dashboard_path
       else
         redirect_to couples_path
-      end
+     end
   end
 
   def update
+    @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
       redirect_to dashboard_path
     else
@@ -32,13 +31,6 @@ class BookingsController < ApplicationController
   end
 
   private
-
-  def set_current_couple
-    if params[:id]
-      @couple = Couple.find(params[:id])
-    end
-  end
-
 
   def booking_params
     params.require(:booking).permit(:user_id, :couple_id, :start_date, :end_date, :review_content, :review_rating, :status)
