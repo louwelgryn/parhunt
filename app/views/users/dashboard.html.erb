@@ -1,27 +1,27 @@
-<h1>My dashboard</h1>
+<h1 class="text-center">MON DASHBOARD</h1>
 
-<p><%= current_user.fullname %></p>
+<h2>Mon profil</h2>
+<div class="profil">
+  <div>
+    <% if current_user.photo.file.nil? %>
+      <p>Ajoutez votre trombine :</p>
+    <% else %>
+      <%= cl_image_tag(current_user.photo, {class: "avatar-large"}) %>
+    <% end %>
+  </div>
 
-<% if current_user.photo.file.nil? %>
-  <p>Ajoutez votre trombine :</p>
-<% else %>
-  <%= cl_image_tag(current_user.photo, :transformation=>[
-    {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-    {:width=>200, :crop=>"scale"}
-  ]) %>
-<% end %>
+  <div class="profil-infos">
+    <p><%= current_user.fullname %></p>
+    <p><%= link_to 'Editer le profil',  edit_user_registration_path %></p>
+  </div>
+</div>
 
-<p><%= link_to 'Edit profile',  edit_user_registration_path %></p>
-
-<h2>My parents</h2>
+<h2>Mes parents</h2>
 
 <% if current_user.couple.nil? %>
-  <%= link_to 'Add my parents', new_couple_path %>
+  <%= link_to 'Mettre mes parents à louer', new_couple_path %>
 <% else %>
-  <%= cl_image_tag(current_user.couple.photo, :transformation=>[
-    {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-    {:width=>200, :crop=>"scale"}
-  ]) %>
+  <%= cl_image_tag(current_user.couple.photo, {class: "avatar-big"}) %>
   <p>Les <%= current_user.couple.name %> 😊</p>
 
   <% unless current_user.couple.bookings.first.nil?  %>
