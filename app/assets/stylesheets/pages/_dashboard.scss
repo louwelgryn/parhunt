@@ -1,7 +1,7 @@
 .booking-card {
   background: white;
-  margin: 8px;
-  padding: 8px;
+  margin: 16px;
+  padding: 24px;
 }
 
 .profil {
@@ -38,3 +38,17 @@
 .violet {
   color: $violet;
 }
+
+.dashboard-profiles {
+  display: flex;
+}
+
+.DB-ratings {
+  input {
+    margin: 8px;
+  }
+}
+// .form-inputs span {
+//   display: inline-block;
+//   margin: 24px;
+// }
