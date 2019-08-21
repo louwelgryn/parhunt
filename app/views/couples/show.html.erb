@@ -21,7 +21,10 @@
     </ul>
   </div>
 
+  <%#= link_to 'Book these super parents!', couples_path(@couple), class: 'btn btn-primary'%>
+  <% if @error %>
+<p> Parents are already booked ! </p>
+<% end %>
 
+<%= render 'couples/form', booking: Booking.new %>
 
-This is the show page !
-<%= render 'form', booking: Booking.new %>
