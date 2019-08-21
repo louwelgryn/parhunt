@@ -76,7 +76,12 @@
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
-          <%= f.input :review_content %>
+          <p>Laissez leur un commentaire!</p>
+          <%= f.input :review_content, label: false %>
+        </div>
+        <div class="form-inputs">
+          <p>Notez les!</p>
+          <%= f.collection_radio_buttons :review_rating, [[0, '0'],[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last %>
         </div>
         <div class="form-inputs">
           <%= f.submit %>
@@ -92,8 +97,9 @@
 
     <p>Vous avez réservé avec <%= reviewed_old_booking.couple.name %></p>
     <p>Du <%= reviewed_old_booking.start_date %> au <%= reviewed_old_booking.end_date %></p>
-    <p>Votre review: </p> <br>
-    <p><%= reviewed_old_booking.review_content %></p>
+    <p>Votre review: </p>
+    <p>"<%= reviewed_old_booking.review_content %>"</p>
+    <p>Vous leur avez donné la note de <strong><%= reviewed_old_booking.review_rating %></strong></p>
 
   <% end %>
 </div>
