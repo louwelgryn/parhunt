@@ -1,0 +1,26 @@
+.card-parent-full-info-firstLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+}
+
+.card-img-and-infos {
+  display: flex;
+  margin-bottom: 50px;
+  background-color: #E8E9F3;
+}
+
+.card-img-and-infos li {
+  margin-bottom: 5px;
+}
+
+.card-form-and-reviews {
+  display: flex;
+}
+
+.card-review-rating {
+  display: flex;
+}
+
+

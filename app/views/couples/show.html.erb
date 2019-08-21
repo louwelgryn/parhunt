@@ -1,37 +1,59 @@
   <div class="container mt-5">
 
-  <div>
-    <%= cl_image_tag @couple.photo, height: 300, width: 400, crop: :fill %>
+  <div class="card-img-and-infos">
+
+    <div>
+      <%= cl_image_tag @couple.photo, height: 300, width: 400, crop: :fill %>
+    </div>
+
+    <div>
+      <ul>
+        <div class="card-parent-full-info-firstLine">
+          <h1><strong><%= @couple.nickname %></strong></h1>
+          <h1><strong><%= @couple.name %></strong></h1>
+          <h3><%= @couple.price%>€/jour</h3>
+        </div>
+
+        <h4><i class="fas fa-map-marker-alt"></i><%= @couple.address %></h4>
+
+        <li>
+          <strong>🍳 Talents :</strong> <%= @couple.skills %>
+        </li>
+        <li>
+          <strong>💪 Qualité :</strong> <%= @couple.best_quality %>
+        </li>
+        <li>
+          <strong>🤠 Description :</strong> <%= @couple.description %>
+        </li>
+        <li>
+          <strong>🛑 Pire défaut :</strong> <%= @couple.worst_default %>
+        </li>
+        <li>
+          <strong> Propriétaire :</strong> <%= @couple.user.fullname %>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div>
-    <h6>Owner: <%=@couple.user.fullname %></h6>
-    <ul>
 
-         <h4><%= @couple.nickname %> <%= @couple.name %></h4>
-
-      <li>🤠
-        <%= @couple.description %>
-      </li>
-
-      <li>💪
-        <%= @couple.best_quality %> !
-      </li>
-
-
-    </ul>
-  </div>
-
-  <%#= link_to 'Book these super parents!', couples_path(@couple), class: 'btn btn-primary'%>
-  <% if @error %>
-<p> Parents are already booked ! </p>
+<% if @error %>
+  <p> Parents are already booked ! </p>
 <% end %>
 
-<h2>Réservations</h2>
 <% if @couple.user == current_user %>
   <p>Vous n'allez quand même pas louer vos propres parents...</p>
 <% else %>
-  <%= render 'couples/form', booking: Booking.new %>
+<div class="card-form-and-reviews">
+  <div class="card-form-simple">
+    <%= render 'couples/form', booking: Booking.new %>
+  </div>
+  <div class="card-review-rating">
+    <% @reviewed_old_bookings.each do |booking| %>
+      <ul>
+        <li><%= booking.end_date %></li>
+        <li><%= booking.review_rating %></li>
+        <li><%= booking.review_content %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
 <% end %>
-
-
-
