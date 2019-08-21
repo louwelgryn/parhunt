@@ -44,7 +44,7 @@
 
 .card-trip .card-trip-user {
   position: absolute;
-  bottom: 133px;
+  bottom: 150px;
   right: 24px;
 
 }
@@ -55,3 +55,40 @@
   top: -20px;
   width: 40px;
 }
+
+.couple-name {
+  padding: 2px;
+  text-align: center;
+  width: 100%;
+  background-color: $light-gray;
+  color: $black;
+  margin-bottom: 0px;
+}
+
+.couple-infos {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+}
+
+.description-couple {
+  font-style: italic;
+  font-size: 16px !important;
+  text-align: center;
+}
+
+.main-title {
+  font-size: 56px;
+  text-align:center;
+  color: $neige;
+}
+
+.main-title-card {
+  padding-top: 320px;
+  padding-bottom: 320px;
+  background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+  width: 100%;
+}
+

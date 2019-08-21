@@ -1,23 +1,29 @@
-
+<div class="main-title-card">
+  <h2 class= "title main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
+</div>
 
 <div class="index-container">
   <div class="half-container">
-    <h2 class= "title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
 
     <div class="row">
       <% @couples.each do |couple| %>
-      <div class="col-4">
+      <div class="col-6">
           <div class="card-trip mb-8">
              <%= cl_image_tag couple.photo, id: 'cover-image', height: 300, width: 400, crop: :fill %>
-            <div class="card-trip-infos">
+
               <div class="card-name">
-               <h4> Les <%= couple.name %></h4>
-              <p>Surnom: <%= couple.nickname %> </p>
+                <h4 class="couple-name">Les <%= couple.name %> <p>("<%= couple.nickname %>"")</p></h4>
+                  <div class="card-trip-infos">
+                    <p class="description-couple">"<%= couple.description %>"</p>
+                  </div>
               </div>
-          <p>Description: <%= couple.best_quality %> </p>
-          <%= link_to 'En savoir plus', couple_path(couple) %>
+
+
+              <div class="couple-infos">
+              <h2><%= couple.price %> €</h2>
+              <%= link_to 'En savoir plus', couple_path(couple) %>
               </div>
-              <h2 class="card-trip-pricing"><%= couple.price %></h2>
+
               <%= cl_image_tag couple.user.photo, crop: :crop,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" %>
             </div>
           </div>
