@@ -7,7 +7,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.date :end_date
       t.text :review_content
       t.integer :review_rating
-      t.string :status, default: 'pending'
+      t.string :status, default: 'en attente'
       t.timestamps
     end
   end
