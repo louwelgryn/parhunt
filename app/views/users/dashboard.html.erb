@@ -1,6 +1,6 @@
 <h1 class="text-center titre-dashboard">MON DASHBOARD</h1>
 
-<h2>Mon profil</h2>
+<h2 class="orange">MON PROFIL</h2>
 <div class="profil">
   <div>
     <% if current_user.photo.file.nil? %>
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<h2>Mes parents</h2>
+<h2 class="orange">MES PARENTS</h2>
 
 <% if current_user.couple.nil? %>
   <%= link_to 'Mettre mes parents à louer', new_couple_path %>
@@ -44,10 +44,10 @@
   <% end %>
 <% end %>
 
-<h2>Mes réservations</h2>
+<h2 class="orange">MES RESERVATIONS</h2>
 
 <div class="booking-card">
-  <h3>Réservations à venir</h3>
+  <h3 class="rose">Réservations à venir</h3>
   <ul>
   <% @upcoming_bookings.each do |upcoming_booking| %>
     <li>Les <%= upcoming_booking.couple.name %>, du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %>. Cette réservation est <%= upcoming_booking.status %>
@@ -64,7 +64,7 @@
 </div>
 
 <div class="booking-card">
-  <h3>Réservations à évaluer</h3>
+  <h3 class="rose">Réservations à évaluer</h3>
 
   <% @old_bookings_to_review.each do |old_booking_to_review| %>
 
@@ -91,7 +91,7 @@
 </div>
 
 <div class="booking-card">
-  <h3>Réservations passées</h3>
+  <h3 class="rose">Réservations passées</h3>
 
   <% @reviewed_old_bookings.each do |reviewed_old_booking| %>
 
