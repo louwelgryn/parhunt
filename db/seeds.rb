@@ -114,3 +114,7 @@ gaillard.remote_photo_url = "https://res.cloudinary.com/duro4nxuo/image/upload/v
 gaillard.save!
 
 puts "Finished !"
+
+
+
+

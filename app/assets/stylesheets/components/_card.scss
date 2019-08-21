@@ -20,7 +20,17 @@
 }
 
 .card-review-rating {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
 }
 
+.card-category {
+  background-size: cover;
+  background-position: center;
+}
+
+.card-category {
+  color: white;
+}
 

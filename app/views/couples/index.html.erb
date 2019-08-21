@@ -1,24 +1,32 @@
-
+<div class="main-title-card">
+  <h2 class= "title main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
+</div>
 
 <div class="index-container">
   <div class="half-container">
-    <h2 class= "title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
 
     <div class="row">
       <% @couples.each do |couple| %>
-      <div class="col-4">
+      <div class="col-6">
           <div class="card-trip mb-8">
              <%= cl_image_tag couple.photo, id: 'cover-image', height: 300, width: 400, crop: :fill %>
-            <div class="card-trip-infos">
+
               <div class="card-name">
-               <h4> Les <%= couple.name %></h4>
-              <p>Surnom: <%= couple.nickname %> </p>
+                <h4 class="couple-name">Les <%= couple.name %> <p>("<%= couple.nickname %>"")</p></h4>
+                  <div class="card-trip-infos justify-content-center align-items-center">
+                    <p class="description-couple">"<%= couple.description %>"</p>
+                  </div>
               </div>
-          <p>Description: <%= couple.best_quality %> </p>
-          <%= link_to 'En savoir plus', couple_path(couple) %>
+
+
+              <div class="couple-infos">
+              <h2><%= couple.price %> €</h2>
+              <span class="button-turquoise-light">
+                <%= link_to 'En savoir +', couple_path(couple) %>
+              </span>
               </div>
               <h2 class="card-trip-pricing"><%= couple.price %></h2>
-              <%= cl_image_tag couple.user.photo, {crop: :crop,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" } %>
+              <%= cl_image_tag couple.user.photo, crop: :fill,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" %>
             </div>
           </div>
        <% end %>
@@ -29,7 +37,7 @@
     <div id="map"
       style="width: 100%;
       height: 600px; position: sticky;
-  top: 0; margin-left: 24px"
+  top: 0; margin-left: 30px"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>

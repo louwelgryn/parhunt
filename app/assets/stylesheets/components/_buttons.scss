@@ -2,10 +2,34 @@
   background-color: $rose;
   color: white;
   font-weight: bold;
+  border-radius: 3px;
 }
 
 .button-orange {
   background-color: $orange;
   color: white;
   font-weight: lighter;
+  border-radius: 3px;
+}
+
+.button-turquoise {
+  background-color: $turquoise;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.button-turquoise-light {
+  background-color: $turquoise;
+  color: black;
+  font-size: 12px;
+  padding: 4px;
+  font-weight: lighter;
+  border-radius: 3px;
+}
+
+.button-neige {
+  background-color: $neige;
+  color: gray;
+  font-weight: lighter;
+  border-radius: 3px;
 }
