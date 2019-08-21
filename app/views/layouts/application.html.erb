@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TODO</title>
+    <title>PARHUNT</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -21,7 +21,13 @@
         <button type="button" class="btn btn-danger">
           <%= link_to "Voir les parents à louer", couples_path %>
         </button>
-        <button type="button" class="btn btn-danger"> <a href="/couples/new">Louez vos parents</a> </button>
+        <% if current_user.nil? %>
+        <% else %>
+          <% if current_user.couple == nil %>
+            <button type="button" class="btn btn-danger"> <a href="/couples/new">Louez vos parents</a> </button>
+          <% else %>
+          <% end %>
+        <% end %>
 
         <% if current_user.nil? %>
           <button type="button" class="btn btn-secondary"><a href="users/sign_up">Se connecter</a></button>

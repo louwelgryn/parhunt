@@ -26,6 +26,12 @@
 <p> Parents are already booked ! </p>
 <% end %>
 
-<%= render 'couples/form', booking: Booking.new %>
+<h2>Réservations</h2>
+<% if @couple.user == current_user %>
+  <p>Vous n'allez quand même pas louer vos propres parents...</p>
+<% else %>
+  <%= render 'couples/form', booking: Booking.new %>
+<% end %>
+
 
 
