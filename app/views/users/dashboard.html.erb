@@ -11,8 +11,8 @@
   </div>
 
   <div class="profil-infos">
-    <p><%= current_user.fullname %></p>
-    <p><%= link_to 'Editer le profil',  edit_user_registration_path %></p>
+    <p><%= current_user.fullname %>        <%= link_to '(Editer le profil)',  edit_user_registration_path %></p>
+    <p><%= @current_user.couple.bookings.length %> réservations</p>
   </div>
 </div>
 
