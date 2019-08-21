@@ -17,6 +17,17 @@
     <div class="navbar-lewagon">
       <p><%= link_to "PARHUNT", couples_path %> <i class="fas fa-female"></i><i class="fas fa-male"></i></p>
 
+      <div class="container-search">
+
+    </div>
+ <%= form_tag couples_path, method: :get, class: "form-inline my-2 my-lg-0 search-flex" do %>
+       <%= text_field_tag :query,
+        params[:query],
+          class: " form-control mr-sm-2",
+          placeholder: "Find a couple"
+        %>
+       <%= submit_tag "Search", class: " btn btn-outline-success my-2 my-sm-0" %>
+      <% end %>
       <div>
         <button type="button" class="btn button-turquoise">
           <%= link_to "Voir les parents à louer", couples_path %>
@@ -37,7 +48,9 @@
           </a>
          <button type="button" class="btn button-neige"> <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %></button>
           <% end %>
+
       </div>
+
 
     </div>
 

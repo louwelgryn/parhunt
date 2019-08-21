@@ -2,7 +2,11 @@ class CouplesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @couples = Couple.geocoded
+    if params[:query].present?
+      @couples = Couple.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @couples = Couple.geocoded
+    end
     @markers = @couples.map do |couple|
        {
         lat: couple.latitude,
