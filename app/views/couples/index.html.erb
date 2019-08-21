@@ -25,7 +25,7 @@
                 <%= link_to 'En savoir +', couple_path(couple) %>
               </span>
               </div>
-
+              <h2 class="card-trip-pricing"><%= couple.price %></h2>
               <%= cl_image_tag couple.user.photo, crop: :fill,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" %>
             </div>
           </div>
