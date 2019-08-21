@@ -10,5 +10,23 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/buttons";
 @import "pages/index";
 @import "pages/dashboard";
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+// #map {
+//   height: 100vh;
+//   width: 600px;
+//   position: sticky;
+//   top: 0;
+// }
+

@@ -1,27 +1,27 @@
-<h1>My dashboard</h1>
+<h1 class="text-center titre-dashboard">MON DASHBOARD</h1>
 
-<p><%= current_user.fullname %></p>
+<h2>Mon profil</h2>
+<div class="profil">
+  <div>
+    <% if current_user.photo.file.nil? %>
+      <p>Ajoutez votre trombine :</p>
+    <% else %>
+      <%= cl_image_tag(current_user.photo, {class: "avatar-large"}) %>
+    <% end %>
+  </div>
 
-<% if current_user.photo.file.nil? %>
-  <p>Ajoutez votre trombine :</p>
-<% else %>
-  <%= cl_image_tag(current_user.photo, :transformation=>[
-    {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-    {:width=>200, :crop=>"scale"}
-  ]) %>
-<% end %>
+  <div class="profil-infos">
+    <p><%= current_user.fullname %></p>
+    <p><%= link_to 'Editer le profil',  edit_user_registration_path %></p>
+  </div>
+</div>
 
-<p><%= link_to 'Edit profile',  edit_user_registration_path %></p>
-
-<h2>My parents</h2>
+<h2>Mes parents</h2>
 
 <% if current_user.couple.nil? %>
-  <%= link_to 'Add my parents', new_couple_path %>
+  <%= link_to 'Mettre mes parents à louer', new_couple_path %>
 <% else %>
-  <%= cl_image_tag(current_user.couple.photo, :transformation=>[
-    {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-    {:width=>200, :crop=>"scale"}
-  ]) %>
+  <%= cl_image_tag(current_user.couple.photo, {class: "avatar-big"}) %>
   <p>Les <%= current_user.couple.name %> 😊</p>
 
   <% unless current_user.couple.bookings.first.nil?  %>
@@ -44,18 +44,27 @@
   <% end %>
 <% end %>
 
-<h2>My reservations</h2>
+<h2>Mes réservations</h2>
 
 <div class="booking-card">
-  <h3>Upcoming reservations</h3>
+  <h3>Réservations à venir</h3>
+  <ul>
   <% @upcoming_bookings.each do |upcoming_booking| %>
-    <%= upcoming_booking.couple.name %>
-    <p> Du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %></p>
+    <li>Les <%= upcoming_booking.couple.name %>, du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %>. Cette réservation est <%= upcoming_booking.status %>
+      <% if upcoming_booking.status == 'en attente' %>
+        <span>🙂</span>
+      <% elsif upcoming_booking.status == 'rejetée' %>
+        <span>😕</span>
+      <% else %>
+        <span>😊</span>
+      <% end %>
+    </li>
   <% end %>
+  </ul>
 </div>
 
 <div class="booking-card">
-  <h3>Previous reservations to review</h3>
+  <h3>Réservations à évaluer</h3>
 
   <% @old_bookings_to_review.each do |old_booking_to_review| %>
 
@@ -67,7 +76,12 @@
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
-          <%= f.input :review_content %>
+          <p>Laissez leur un commentaire!</p>
+          <%= f.input :review_content, label: false %>
+        </div>
+        <div class="form-inputs">
+          <p>Notez les!</p>
+          <%= f.collection_radio_buttons :review_rating, [[0, '0'],[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last %>
         </div>
         <div class="form-inputs">
           <%= f.submit %>
@@ -77,16 +91,15 @@
 </div>
 
 <div class="booking-card">
-  <h3>Previous reservations</h3>
+  <h3>Réservations passées</h3>
 
   <% @reviewed_old_bookings.each do |reviewed_old_booking| %>
 
     <p>Vous avez réservé avec <%= reviewed_old_booking.couple.name %></p>
     <p>Du <%= reviewed_old_booking.start_date %> au <%= reviewed_old_booking.end_date %></p>
-    <p>Votre review: </p> <br>
-    <p><%= reviewed_old_booking.review_content %></p>
+    <p>Votre review: </p>
+    <p>"<%= reviewed_old_booking.review_content %>"</p>
+    <p>Vous leur avez donné la note de <strong><%= reviewed_old_booking.review_rating %></strong></p>
 
   <% end %>
-
-
 </div>

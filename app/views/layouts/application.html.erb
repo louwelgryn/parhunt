@@ -3,30 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>TODO</title>
+    <title>PARHUNT</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
       <%= stylesheet_pack_tag 'application' %> <!-- NEW! -->
        <%= javascript_pack_tag 'application' %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+   <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
 
   <body>
 
     <div class="navbar-lewagon">
-      <a href="/"><p>PARHUNT</p></a>
+      <p><%= link_to "PARHUNT", couples_path %></p>
 
       <div>
-        <button type="button" class="btn btn-danger"> <a href="/couples">All parents</a> </button>
-        <button type="button" class="btn btn-danger"> <a href="/couples/new">Rent your parents</a> </button>
+        <button type="button" class="btn vermeille">
+          <%= link_to "Voir les parents à louer", couples_path %>
+        </button>
+        <% if current_user.nil? %>
+        <% else %>
+          <% if current_user.couple == nil %>
+            <button type="button" class="btn vermeille"> <a href="/couples/new">Louez vos parents</a> </button>
+          <% else %>
+          <% end %>
+        <% end %>
 
         <% if current_user.nil? %>
-          <button type="button" class="btn btn-secondary"><a href="users/sign_up">Sign in</a></button>
+          <button type="button" class="btn vermeille"><a href="users/sign_up">Se connecter</a></button>
         <% else  %>
           <%= link_to current_user.fullname, dashboard_path %>
-          <img class="avatar" src="<% cl_image_tag current_user.photo %>">
-         <button type="button" class="btn btn-secondary"> <%= link_to('Logout', destroy_user_session_path, method: :delete) %></button>
+          <a href="/dashboard">
+          <%= cl_image_tag current_user.photo, {class: "avatar"} %>
+          </a>
+         <button type="button" class="btn bordeaux"> <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %></button>
           <% end %>
       </div>
 

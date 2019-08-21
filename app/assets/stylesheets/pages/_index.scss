@@ -1,10 +1,18 @@
 // Import page-specific CSS files here.
 @import "home";
 
+.index-container {
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-position: column;
+}
+
 .card-trip {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 8px;
 }
 
 #cover-image  {
