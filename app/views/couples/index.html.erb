@@ -24,7 +24,7 @@
               <%= link_to 'En savoir plus', couple_path(couple) %>
               </div>
 
-              <%= cl_image_tag couple.user.photo, crop: :crop,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" %>
+              <%= cl_image_tag couple.user.photo, crop: :fill,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" %>
             </div>
           </div>
        <% end %>
