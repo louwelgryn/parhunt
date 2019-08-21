@@ -1,37 +1,41 @@
-<h2>Je mets mes parents en location</h2>
+<div class="container">
 
-<%= simple_form_for (@couple) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class="form-inputs">
-    <%= f.input :name %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :nickname %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :description %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :skills %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :best_quality %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :worst_default %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :address %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :price %>
-  </div>
-  <div class="form-inputs">
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-  </div>
-  <div class="form-actions">
-    <%= f.submit "Mes ieuv sur les internets", class: "btn btn-primary" %>
-  </div>
-<% end %>
+  <h2 class="my-5">Je mets mes parents en location</h2>
+
+  <%= simple_form_for (@couple) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <%= f.input :name, label: 'Leur nom' %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :nickname, label: 'Leur surnom' %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :description, label: 'Une petite description' %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :skills, label: 'Leurs compétences' %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :best_quality, label: 'Leur plus grande qualité' %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :worst_default, label: 'Leur pire défaut' %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :address, label: 'Leur adresse' %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :price, label: 'Leur tarif' %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :photo, label: 'Une petite photo' %>
+      <%= f.input :photo_cache, as: :hidden %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Mes ieuv sur les internets", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+</div>
