@@ -12,7 +12,10 @@
 
   <div class="profil-infos">
     <p><%= current_user.fullname %>        <%= link_to '(Editer le profil)',  edit_user_registration_path %></p>
-    <p>Vous parents ont été loué <%= @current_user.couple.bookings.length %> fois jusqu'ici</p>
+    <% if current_user.couple.nil?  %>
+    <% else %>
+      <p>Vous parents ont été loué <%= @current_user.couple.bookings.length %> fois jusqu'ici</p>
+    <% end %>
     <p>Vous avez loué <%= @current_user.bookings.length %> couple de parents jusqu'ici.</p>
 
   </div>
@@ -20,7 +23,7 @@
 
 <h2 class="orange p-3">MES PARENTS A LOUER</h2>
 
-<div class="profil dashboard-card">
+<div>
   <div>
     <% if current_user.couple.nil? %>
       <%= link_to 'Mettre mes parents à louer', new_couple_path %>
