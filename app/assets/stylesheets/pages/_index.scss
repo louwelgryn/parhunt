@@ -1,6 +1,17 @@
 // Import page-specific CSS files here.
 @import "home";
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#00A0C6;
+  text-decoration:none;
+  cursor:pointer;
+}
+
 .index-container {
   margin: 0 auto;
   padding: 10px;
@@ -33,6 +44,12 @@
   margin: 0;
 }
 
+.card-trip-infos {
+  height: 88px;
+  display: flex;
+  justify-content: center;
+}
+
 
 .card-trip .card-trip-infos {
   padding: 16px;
@@ -46,7 +63,6 @@
   position: absolute;
   bottom: 150px;
   right: 24px;
-
 }
 
 .card-trip-infos .card-trip-user {
@@ -58,6 +74,7 @@
 
 .couple-name {
   padding: 2px;
+  padding-bottom: 8px;
   text-align: center;
   width: 100%;
   background-color: $light-gray;
