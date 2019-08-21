@@ -10,9 +10,9 @@
       <ul>
         <div class="card-parent-full-info-firstLine">
           <h1><strong><%= @couple.nickname %></strong></h1>
-          <h1><strong><%= @couple.name %></strong></h1>
           <h3><%= @couple.price%>€/jour</h3>
         </div>
+        <h3><strong><%= @couple.name %></strong></h3>
 
         <h4><i class="fas fa-map-marker-alt"></i><%= @couple.address %></h4>
 
@@ -26,7 +26,7 @@
           <strong>🤠 Description :</strong> <%= @couple.description %>
         </li>
         <li>
-          <strong>🛑 Pire défaut :</strong> <%= @couple.worst_default %>
+          <strong>😈 Pire défaut :</strong> <%= @couple.worst_default %>
         </li>
         <li>
           <strong> Propriétaire :</strong> <%= @couple.user.fullname %>
@@ -34,6 +34,9 @@
       </ul>
     </div>
   </div>
+
+
+
 
 <% if @error %>
   <p style="color: red"> Parents are already booked ! </p>
@@ -46,14 +49,22 @@
   <div class="card-form-simple">
     <%= render 'couples/form', booking: Booking.new %>
   </div>
+
   <div class="card-review-rating">
     <% @reviewed_old_bookings.each do |booking| %>
       <ul>
-        <li><%= booking.end_date %></li>
-        <li><%= booking.review_rating %></li>
-        <li><%= booking.review_content %></li>
+        <li>Avis laissé le : <%= booking.end_date %><br/>
+          <% booking.review_rating.times do %>
+             <i class="fas fa-star"></i>
+           <% end %>
+           <% (5 - booking.review_rating).times do %>
+             <i class="far fa-star"></i>
+          <% end %>
+        </li>
+         <p>Commentaire : <%= booking.review_content %></p>
       </ul>
     <% end %>
   </div>
+
 </div>
 <% end %>
