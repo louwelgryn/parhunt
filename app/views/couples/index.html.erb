@@ -13,7 +13,7 @@
 
               <div class="card-name">
                 <h4 class="couple-name">Les <%= couple.name %> <p>("<%= couple.nickname %>"")</p></h4>
-                  <div class="card-trip-infos">
+                  <div class="card-trip-infos justify-content-center align-items-center">
                     <p class="description-couple">"<%= couple.description %>"</p>
                   </div>
               </div>
@@ -21,7 +21,9 @@
 
               <div class="couple-infos">
               <h2><%= couple.price %> €</h2>
-              <%= link_to 'En savoir plus', couple_path(couple) %>
+              <span class="button-turquoise-light">
+                <%= link_to 'En savoir +', couple_path(couple) %>
+              </span>
               </div>
 
               <%= cl_image_tag couple.user.photo, crop: :crop,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" %>
