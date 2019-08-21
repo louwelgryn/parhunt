@@ -1,11 +1,11 @@
 <div class="container">
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2>Book <%= @couple.name %> for your special occasion</h2>
+    <h2>Réservez <%= @couple.nickname %> pour une occasion spéciale ! 🥳</h2>
     <%= simple_form_for [@couple, @booking] do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-      <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, label: "Date de début 😄" %>
+      <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, label: "Date de fin 😢" %>
       <%= f.button :submit, "Go", class: "btn btn-primary" %>
     <% end %>
   </div>
