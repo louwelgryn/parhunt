@@ -8,6 +8,8 @@ class CouplesController < ApplicationController
   def show
     @couple = Couple.find(params[:id])
     @booking = Booking.new
+    @old_bookings = @couple.bookings.where("end_date <= ?", Date.today)
+    @reviewed_old_bookings = @old_bookings.where.not(review_content: nil)
   end
 
 
