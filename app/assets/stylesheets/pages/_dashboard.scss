@@ -1,7 +1,17 @@
-.booking-card {
+.dashboard-card {
   background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 3px;
   margin: 8px;
   padding: 8px;
+}
+
+.bookings-card {
+  display: flex;
+}
+
+.booking-card-infos {
+
 }
 
 .profil {

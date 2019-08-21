@@ -2,8 +2,8 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.couple = Couple.find(params[:couple_id])
     @couple = Couple.find(params[:couple_id])
+    @booking.couple = @couple
     isbookable = @couple.bookings.all? do |booking|
       (@booking.end_date < booking.start_date) || (booking.end_date < @booking.start_date)
     end
@@ -12,6 +12,8 @@ class BookingsController < ApplicationController
       redirect_to dashboard_path
     else
       @error = true
+      @old_bookings = @couple.bookings.where("end_date <= ?", Date.today)
+      @reviewed_old_bookings = @old_bookings.where.not(review_content: nil)
       render "couples/show"
     end
   end
@@ -34,6 +36,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :couple_id, :start_date, :end_date, :review_content, :review_rating, :status)
+    params.require(:booking).permit(:user_id, :start_date, :end_date, :review_content, :review_rating, :status)
   end
 end

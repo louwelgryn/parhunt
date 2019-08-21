@@ -15,7 +15,7 @@
   <body>
 
     <div class="navbar-lewagon">
-      <p><%= link_to "PARHUNT", couples_path %></p>
+      <p><%= link_to "PARHUNT", couples_path %> <i class="fas fa-female"></i><i class="fas fa-male"></i></p>
 
       <div>
         <button type="button" class="btn button-turquoise">
@@ -32,10 +32,8 @@
         <% if current_user.nil? %>
           <button type="button" class="btn button-rose"><a href="users/sign_up">Se connecter</a></button>
         <% else  %>
-          <%= link_to current_user.fullname, dashboard_path %>
-
           <a href="/dashboard">
-          <%= cl_image_tag current_user.photo, {class: "avatar"} %>
+          <%= cl_image_tag current_user.photo,crop: :fill,height: 40, class: "avatar"%>
           </a>
          <button type="button" class="btn button-neige"> <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %></button>
           <% end %>
