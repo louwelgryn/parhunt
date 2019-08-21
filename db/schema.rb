@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_132603) do
     t.date "end_date"
     t.text "review_content"
     t.integer "review_rating"
-    t.string "status", default: "pending"
+    t.string "status", default: "en attente"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["couple_id"], name: "index_bookings_on_couple_id"

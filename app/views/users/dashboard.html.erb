@@ -44,18 +44,27 @@
   <% end %>
 <% end %>
 
-<h2>My reservations</h2>
+<h2>Mes réservations</h2>
 
 <div class="booking-card">
-  <h3>Upcoming reservations</h3>
+  <h3>Réservations à venir</h3>
+  <ul>
   <% @upcoming_bookings.each do |upcoming_booking| %>
-    <%= upcoming_booking.couple.name %>
-    <p> Du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %></p>
+    <li>Les <%= upcoming_booking.couple.name %>, du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %>. Cette réservation est <%= upcoming_booking.status %>
+      <% if upcoming_booking.status == 'en attente' %>
+        <span>🙂</span>
+      <% elsif upcoming_booking.status == 'rejetée' %>
+        <span>😕</span>
+      <% else %>
+        <span>😊</span>
+      <% end %>
+    </li>
   <% end %>
+  </ul>
 </div>
 
 <div class="booking-card">
-  <h3>Previous reservations to review</h3>
+  <h3>Réservations à évaluer</h3>
 
   <% @old_bookings_to_review.each do |old_booking_to_review| %>
 
@@ -77,7 +86,7 @@
 </div>
 
 <div class="booking-card">
-  <h3>Previous reservations</h3>
+  <h3>Réservations passées</h3>
 
   <% @reviewed_old_bookings.each do |reviewed_old_booking| %>
 
@@ -87,6 +96,4 @@
     <p><%= reviewed_old_booking.review_content %></p>
 
   <% end %>
-
-
 </div>
