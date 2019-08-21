@@ -2,7 +2,14 @@ class CouplesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @couples = Couple.all
+    @couples = Couple.geocoded
+    @markers = @couples.map do |couple|
+       {
+        lat: couple.latitude,
+        lng: couple.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { couple: couple })
+      }
+    end
   end
 
   def show
