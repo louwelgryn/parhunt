@@ -1,7 +1,7 @@
 <h1 class="text-center titre-dashboard">MON DASHBOARD</h1>
 
-<h2 class="orange">MON PROFIL</h2>
-<div class="profil">
+<h2 class="orange p-3">MON PROFIL</h2>
+<div class="profil dashboard-card">
   <div>
     <% if current_user.photo.file.nil? %>
       <p>Ajoutez votre trombine :</p>
@@ -11,42 +11,59 @@
   </div>
 
   <div class="profil-infos">
-    <p><%= current_user.fullname %></p>
-    <p><%= link_to 'Editer le profil',  edit_user_registration_path %></p>
+    <p><%= current_user.fullname %>        <%= link_to '(Editer le profil)',  edit_user_registration_path %></p>
+    <% if current_user.couple.nil?  %>
+    <% else %>
+      <p>Vous parents ont été loué <%= @current_user.couple.bookings.length %> fois jusqu'ici</p>
+    <% end %>
+    <p>Vous avez loué <%= @current_user.bookings.length %> couple de parents jusqu'ici.</p>
+
   </div>
 </div>
 
-<h2 class="orange">MES PARENTS</h2>
+<h2 class="orange p-3">MES PARENTS A LOUER</h2>
 
-<% if current_user.couple.nil? %>
-  <%= link_to 'Mettre mes parents à louer', new_couple_path %>
-<% else %>
-  <%= cl_image_tag(current_user.couple.photo, {class: "avatar-big"}) %>
-  <p>Les <%= current_user.couple.name %> 😊</p>
+<div>
+  <div>
+    <% if current_user.couple.nil? %>
+      <%= link_to 'Mettre mes parents à louer', new_couple_path %>
+    <% else %>
+      <%= cl_image_tag(current_user.couple.photo, {class: "avatar-big"}) %>
+  </div>
 
-  <% unless current_user.couple.bookings.first.nil?  %>
-    <p>Leurs réservations :</p>
-    <% current_user.couple.bookings.each do |booking| %>
-      <hr>
-      <p>Réservés par <%= booking.user.fullname %> pour le <%= booking.start_date %></p>
-      <%= simple_form_for [current_user.couple, booking] do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <div class="form-inputs">
-          <%= f.input :status, :collection => Booking::STATUS %>
-        </div>
-        <div class="form-inputs">
-          <%= f.submit %>
-        </div>
+  <div>
+    <p>Tes parents: les <%= current_user.couple.name %> 😊</p>
+
+    <% if current_user.couple.bookings.first.nil?  %>
+      <br>
+      <p>Pas encore de réservation pour tes parents!</p>
+
+    <% else %>
+
+      <p>Leurs réservations :</p>
+      <% current_user.couple.bookings.each do |booking| %>
+        <hr>
+        <p>Réservés par <%= booking.user.fullname %> pour le <%= booking.start_date %></p>
+        <%= simple_form_for [current_user.couple, booking] do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <div class="form-inputs">
+            <%= f.input :status, :collection => Booking::STATUS %>
+          </div>
+          <div class="form-inputs">
+            <%= f.submit %>
+          </div>
+        <% end %>
+        <hr>
       <% end %>
-      <hr>
     <% end %>
-  <% end %>
+  </div>
 <% end %>
+</div>
 
-<h2 class="orange">MES RESERVATIONS</h2>
+<h2 class="orange p-3">MES RESERVATIONS</h2>
 
-<div class="booking-card">
+<div class="dashboard-card">
   <h3 class="rose">Réservations à venir</h3>
   <ul>
   <% @upcoming_bookings.each do |upcoming_booking| %>
@@ -63,7 +80,7 @@
   </ul>
 </div>
 
-<div class="booking-card">
+<div class="dashboard-card">
   <h3 class="rose">Réservations à évaluer</h3>
 
   <% @old_bookings_to_review.each do |old_booking_to_review| %>
@@ -90,16 +107,24 @@
     <% end %>
 </div>
 
-<div class="booking-card">
+<div class="dashboard-card">
   <h3 class="rose">Réservations passées</h3>
 
   <% @reviewed_old_bookings.each do |reviewed_old_booking| %>
 
-    <p>Vous avez réservé avec <%= reviewed_old_booking.couple.name %></p>
-    <p>Du <%= reviewed_old_booking.start_date %> au <%= reviewed_old_booking.end_date %></p>
-    <p>Votre review: </p>
-    <p>"<%= reviewed_old_booking.review_content %>"</p>
-    <p>Vous leur avez donné la note de <strong><%= reviewed_old_booking.review_rating %></strong></p>
+  <div class="booking-card">
+    <div>
+      <%= cl_image_tag(reviewed_old_booking.couple.photo, {class: "avatar-large"}) %>
+    </div>
+
+    <div class="booking-card-infos">
+      <p>Vous avez réservé avec <%= reviewed_old_booking.couple.name %></p>
+      <p>Du <%= reviewed_old_booking.start_date %> au <%= reviewed_old_booking.end_date %></p>
+      <p>Votre review: </p>
+      <p>"<%= reviewed_old_booking.review_content %>"</p>
+      <p>Vous leur avez donné la note de <strong><%= reviewed_old_booking.review_rating %></strong></p>
+    </div>
+  </div>
 
   <% end %>
 </div>
