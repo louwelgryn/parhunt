@@ -13,11 +13,15 @@ class Couple < ApplicationRecord
     if self.bookings.first.present?
       sum = 0
       rated_bookings = self.bookings.where.not(review_rating: nil)
-      rated_bookings.each do |rated_booking|
-        sum += rated_booking.review_rating
+      if rated_bookings.first.present?
+        rated_bookings.each do |rated_booking|
+          sum += rated_booking.review_rating
+        end
+        avg_float = sum.fdiv(rated_bookings.count)
+        return (avg_float * 2).round / 2.0
+      else
+        return nil
       end
-      avg_float = sum.fdiv(rated_bookings.count)
-      return (avg_float * 2).round / 2.0
     else
       return nil
     end

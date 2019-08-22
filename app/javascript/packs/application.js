@@ -23,7 +23,7 @@ initMapbox();
 import Typed from 'typed.js';
 
 const options = {
-  strings: ["un goûter", "un mariage","un enterrement","..."],
+  strings: ["un goûter", "un mariage","un rendez-vous avec votre professeur de maths","un mariage"],
   loop: true,
   typeSpeed: 40
 }
@@ -38,7 +38,7 @@ const calculator = () => {
   if (start_date) {
     end_date.addEventListener('change', (event) => {
    const reservation_price = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )* parseInt(event.target.dataset.price)
-    end_date.insertAdjacentHTML('afterEnd', `<p> your reservation total price is ${reservation_price} euros </p>`)
+   document.querySelector(".booking_price").innerHTML =`your reservation total price is ${reservation_price} euros`
     })
   }
 }
