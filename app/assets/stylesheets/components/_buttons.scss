@@ -1,9 +1,98 @@
-.button-rose {
-  background-color: $rose;
+.button-default {
+    position: relative;
+    display: inline-block;
+    height: 34px;
+    padding: 0 23px;
+    border: 1px solid;
+    border-radius: 50px;
+    line-height: 34px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    // color: #A6ABAB;
+    border-color: #DBE0DF;
+}
+
+.button-default.turquoise {
+  background-color: $turquoise;
   color: white;
   font-weight: bold;
-  border-radius: 3px;
+  a:hover {
+    color: inherit;
+  }
 }
+
+.button-default.turquoise:hover {
+  background-color: white;
+  border-color: $turquoise;
+  color: $turquoise;
+}
+
+.button-default.turquoise-light {
+  background-color: white;
+  border-color: $turquoise;
+  color: $turquoise;
+  a:hover {
+    color: inherit;
+  }
+}
+
+.button-default.turquoise-light:hover {
+  background-color: white;
+  border-color: #DBE0DF;
+  color: #A6ABAB;
+  a:hover {
+    color: inherit;
+  }
+}
+
+.button-default.rouge {
+  background-color: $rouge;
+  color: white;
+  font-weight: bold;
+  a:hover {
+    color: inherit;
+  }
+}
+
+.button-default.rouge:hover {
+  background-color: white;
+  border-color: $rouge;
+  color: $rouge;
+}
+
+.button-default.violet {
+  background-color: $violet;
+  color: white;
+  font-weight: bold;
+  a:hover {
+    color: inherit;
+  }
+}
+
+.button-default.violet:hover {
+  background-color: white;
+  border-color: $violet;
+  color: $violet;
+}
+
+.button-default.light-blue {
+  background-color: $light-blue;
+  color: white;
+  font-weight: bold;
+  a:hover {
+    color: inherit;
+  }
+}
+
+.button-default.light-blue:hover {
+  background-color: white;
+  border-color: $light-blue;
+  color: $light-blue;
+}
+
 
 .button-orange {
   background-color: $orange;
@@ -12,33 +101,23 @@
   border-radius: 3px;
 }
 
-.button-turquoise {
-  background-color: $turquoise;
-  font-weight: bold;
-  border-radius: 3px;
-}
-
-.button-turquoise-light {
-  background-color: $turquoise;
-  color: black;
-  font-size: 12px;
-  padding: 4px;
-  font-weight: lighter;
-  border-radius: 3px;
-}
-
-.button-neige {
-  background-color: $neige;
+.button-rouge {
+  background-color: $rouge;
   color: gray;
   font-weight: lighter;
   border-radius: 3px;
+}
+
+.button-default.small {
+  padding: 0px 4px;
+  height: 32px;
+  width: 48px;
+  margin-left: 4px;
 }
 
 .contain {
   margin: 0 auto;
   width: 200px;
 }
-
-
 
 
