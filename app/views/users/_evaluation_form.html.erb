@@ -1,0 +1,17 @@
+<% @old_bookings_to_review.each do |old_booking_to_review| %>
+  <p>Vous avez réservé les <%= old_booking_to_review.couple.name %> du <%= old_booking_to_review.start_date %> au <%= old_booking_to_review.end_date %></p>
+  <%= simple_form_for [old_booking_to_review.couple, old_booking_to_review] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <p>Laissez leur un commentaire :</p>
+      <%= f.input :review_content, label: false %>
+    </div>
+    <div class="form-inputs DB-ratings">
+      <p>Notez-les : <%= f.collection_radio_buttons :review_rating, [[0, '0'],[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last %></p>
+    </div>
+    <div class="form-inputs">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% end %>
