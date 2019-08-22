@@ -1,5 +1,5 @@
-<div class="main-title-card">
-  <h2 class= "title main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
+<div class="landing-cover">
+  <h2 class= "main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
 </div>
 
 <div class="index-container">
@@ -8,25 +8,55 @@
     <div class="row">
       <% @couples.each do |couple| %>
       <div class="col-6">
-          <div class="card-trip mb-8">
-             <%= cl_image_tag couple.photo, id: 'cover-image', height: 300, width: 400, crop: :fill %>
+          <div class="card mb-8">
+            <div class="card-photo-container">
+             <%= cl_image_tag couple.photo, class: 'card-photo', height: 300, width: 400, crop: :fill %>
+             <div class="middle">
+              <span class="button-default turquoise">
+                <%= link_to 'En savoir +', couple_path(couple) %>
+              </span>
+            </div>
+          </div>
 
-              <div class="card-name">
-                <h4 class="couple-name">Les <%= couple.name %> <p>("<%= couple.nickname %>"")</p></h4>
+
+             <div class="card-info">
+              <div class="card-info-content">
+
+                <div class="double-info">
+                  <div class="box-left">
+                    <h4 class="strong">Les <%= couple.name %></h4>
+                  </div>
+                  <div class="box-right">
+                    <p class="lighter">("<%= couple.nickname %>"")</p>
+                  </div>
+                </div>
+
                   <div class="card-trip-infos justify-content-center align-items-center">
                     <p class="description-couple">"<%= couple.description %>"</p>
                   </div>
               </div>
 
 
-              <div class="couple-infos">
-              <h2><%= couple.price %> €</h2>
-              <span class="button-turquoise-light">
-                <%= link_to 'En savoir +', couple_path(couple) %>
-              </span>
+                <div class="card-info-footer">
+                    <div class="double-info">
+                      <div class="box-left">
+                        <%= cl_image_tag couple.user.photo, crop: :fill,height: 40,  gravity: 'face', class: "card-user-photo avatar-bordered" %>
+                        <h2><%= couple.price %> €</h2>
+                      </div>
+                      <div class="box-right">
+                        <!-- <span class="button-default light-blue small"> -->
+                          <div class="rating float-right">
+                          <span><i class="fas fa-star big"></i><i class="fas fa-star big"></i><i class="fas fa-star big"></i></span>
+                          </div>
+                        <!-- </span> -->
+                        <span class="button-default light-blue small">
+                        45
+                        </span>
+                      </div>
+                  </div>
+                </div>
               </div>
 
-              <%= cl_image_tag couple.user.photo, crop: :fill,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" %>
             </div>
           </div>
        <% end %>
