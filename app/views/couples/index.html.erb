@@ -62,7 +62,7 @@
                       <div class="box-right">
                         <!-- <span class="button-default light-blue small"> -->
                           <div class="rating float-right">
-                          <span><i class="fas fa-star big"></i><i class="fas fa-star big"></i><i class="fas fa-star big"></i></span>
+                          <span><%= render partial: "average_stars", locals: { couple: couple } %></span>
                           </div>
                         <!-- </span> -->
                         <span class="bookings-count light-blue small"><%= couple.bookings.count %></span>
