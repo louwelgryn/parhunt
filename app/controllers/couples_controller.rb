@@ -1,6 +1,6 @@
 class CouplesController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     if params[:query].present?
       @couples = Couple.where("name ILIKE ? OR best_quality ILIKE ? ", "%#{params[:query]}%")
@@ -8,7 +8,7 @@ class CouplesController < ApplicationController
       @couples = Couple.geocoded
     end
     @markers = @couples.map do |couple|
-       {
+      {
         lat: couple.latitude,
         lng: couple.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { couple: couple })
@@ -22,7 +22,6 @@ class CouplesController < ApplicationController
     @old_bookings = @couple.bookings.where("end_date <= ?", Date.today)
     @reviewed_old_bookings = @old_bookings.where.not(review_content: nil)
   end
-
 
 
   def new
