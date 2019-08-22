@@ -1,94 +1,51 @@
-  <div class="container mt-5">
 
-  <div class="card-img-and-infos">
-
-    <div>
-      <%= cl_image_tag @couple.photo, height: 300, width: 400, crop: :fill %>
-    </div>
-
-    <div>
-      <ul>
-        <div class="card-parent-full-info-firstLine">
-          <h1><strong><%= @couple.nickname %></strong></h1>
-          <h3><%= @couple.price%>€/jour</h3>
+<div class="container mt-5">
+  <div class="show-container">
+    <%= cl_image_tag @couple.photo, height: 600, width: 600, crop: :fill, class: "show-image" %>
+      <div class="show-information">
+         <div class="show-name">
+          <h1><strong>Les <%= @couple.name %></strong></h3>
+          <h3><%= @couple.nickname %></h1>
+          <h4><%= @couple.price%>€/jour</h4>
         </div>
-        <h3><strong><%= @couple.name %></strong></h3>
+        <h4><i class="fas fa-map-marker-alt"></i> <%= @couple.address %></h4>
+          <div class="show-details">
+              <strong> Talents:</strong> <%= @couple.skills %>
+              <strong> Qualité:</strong> <%= @couple.best_quality %>
+              <strong> Description:</strong> <%= @couple.description %>
+              <strong> Pire défaut:</strong> <%= @couple.worst_default %>
+              <strong> Propriétaire:</strong> <%= @couple.user.fullname %>
+          </div>
+          <% if @error %>
+            <p style="color: red"> Ces parents sont déjà réservés sur cette date ! </p>
+          <% end %>
 
-        <h4><i class="fas fa-map-marker-alt"></i><%= @couple.address %></h4>
+          <% if @couple.user == current_user %>
+            <p>Vous n'allez quand même pas louer vos propres parents...</p>
+          <% else %>
 
-        <li>
-          <strong>🍳 Talents :</strong> <%= @couple.skills %>
-        </li>
-        <li>
-          <strong>💪 Qualité :</strong> <%= @couple.best_quality %>
-        </li>
-        <li>
-          <strong>🤠 Description :</strong> <%= @couple.description %>
-        </li>
-        <li>
-          <strong>😈 Pire défaut :</strong> <%= @couple.worst_default %>
-        </li>
-        <li>
-          <strong> Propriétaire :</strong> <%= @couple.user.fullname %>
-        </li>
-      </ul>
+            <div class="">
+              <div class="">
+                <%= render 'couples/form', booking: Booking.new %>
+              </div>
+
+              <div class="card-review-rating">
+                <% @reviewed_old_bookings.each do |booking| %>
+                  <ul>
+                    <li>Avis laissé le : <%= booking.end_date %><br/>
+                      <% booking.review_rating.times do %>
+                         <i class="fas fa-star"></i>
+                       <% end %>
+                       <% (5 - booking.review_rating).times do %>
+                         <i class="far fa-star"></i>
+                      <% end %>
+                    </li>
+                     <p>Commentaire : <%= booking.review_content %></p>
+                  </ul>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
     </div>
   </div>
-
-<% if @error %>
-  <p style="color: red"> Parents are already booked ! </p>
-<% end %>
-
-<% if @couple.user == current_user %>
-  <p>Vous n'allez quand même pas louer vos propres parents...</p>
-<% else %>
-<div class="card-form-and-reviews">
-  <div class="card-form-simple pb-3">
-    <%= render 'couples/form', booking: Booking.new %>
-  </div>
-
-  <div class="card-review-rating">
-    <% @reviewed_old_bookings.each do |booking| %>
-      <ul>
-        <li>Avis laissé le : <%= booking.end_date %><br/>
-          <% booking.review_rating.times do %>
-             <i class="fas fa-star"></i>
-           <% end %>
-           <% (5 - booking.review_rating).times do %>
-             <i class="far fa-star"></i>
-          <% end %>
-        </li>
-         <p>Commentaire : <%= booking.review_content %></p>
-      </ul>
-    <% end %>
-
-        <li>
-          Average rating :
-
-
-          <% @couple.average.to_i.times do %>
-            <i class="fas fa-star"></i>
-          <% end %>
-
-          <% if @couple.average == (@couple.average.to_i + 0.5) %>
-            <i class="fas fa-star-half-alt"></i>
-          <% end %>
-
-
-          <% if @couple.average != (@couple.average.to_i + 0.5) %>
-            <% (5 - @couple.average.to_i).times do %>
-              <i class="far fa-star"></i>
-            <% end %>
-          <% else %>
-            <% (4 - @couple.average.to_i).times do %>
-              <i class="far fa-star"></i>
-            <% end %>
-          <% end %>
-
-
-        </li>
-
-  </div>
-
-</div>
-<% end %>
