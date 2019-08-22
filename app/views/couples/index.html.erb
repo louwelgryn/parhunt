@@ -1,13 +1,12 @@
 <div class="main-title-card">
   <div class="typed-text">
-    <h2 class= "title main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
+    <h2 class= "title main-title">Trouvez des parents à louer pour <span class="typed"></span> </h2>
   </div>
   <div class="contain">
-  <button type="button" class="btn button-turquoise" >
-    <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
-  </button>
+    <button type="button" class="btn button-turquoise" >
+      <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
+    </button>
   </div>
-
 </div>
 
 <div id="scroll-to-all-parents" class="index-container">
@@ -20,18 +19,18 @@
              <%= cl_image_tag couple.photo, id: 'cover-image', height: 300, width: 400, crop: :fill %>
 
               <div class="card-name">
-                <h4 class="couple-name">Les <%= couple.name %> <p>("<%= couple.nickname %>"")</p></h4>
-                  <div class="card-trip-infos justify-content-center align-items-center">
-                    <p class="description-couple">"<%= couple.description %>"</p>
-                  </div>
+                <h4 class="couple-name">Les <%= couple.name %> <p>(<%= couple.nickname %>)</p></h4>
+                <div class="card-trip-infos justify-content-center align-items-center">
+                  <p class="description-couple"><%= couple.description %></p>
+                  <p class="description-couple"><%= couple.average %></p>
+                </div>
               </div>
 
-
               <div class="couple-infos">
-              <h2><%= couple.price %> €</h2>
-              <span class="button-turquoise-light">
-                <%= link_to 'En savoir +', couple_path(couple) %>
-              </span>
+                <h2><%= couple.price %> €</h2>
+                <span class="button-turquoise-light">
+                  <%= link_to 'En savoir +', couple_path(couple) %>
+                </span>
               </div>
 
               <%= cl_image_tag couple.user.photo, crop: :fill,height: 40,  gravity: 'face', class: "card-trip-user avatar-bordered" %>
