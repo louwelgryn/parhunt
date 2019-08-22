@@ -10,6 +10,8 @@
       <%= stylesheet_pack_tag 'application' %> <!-- NEW! -->
        <%= javascript_pack_tag 'application' %>
    <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -29,24 +31,24 @@
        <%= submit_tag "Search", class: " btn btn-outline-success my-2 my-sm-0" %>
       <% end %>
       <div>
-        <button type="button" class="btn button-turquoise">
+        <button type="button" class="button-default turquoise">
           <%= link_to "Voir les parents à louer", couples_path %>
         </button>
         <% if current_user.nil? %>
         <% else %>
           <% if current_user.couple == nil %>
-            <button type="button" class="btn button-turquoise"> <a href="/couples/new">Louez vos parents</a> </button>
+            <button type="button" class="button-default turquoise"> <a href="/couples/new">Louez vos parents</a> </button>
           <% else %>
           <% end %>
         <% end %>
 
         <% if current_user.nil? %>
-          <button type="button" class="btn button-rose"><a href="users/sign_up">Se connecter</a></button>
+          <button type="button" class="button-default rouge"><a href="users/sign_up">Se connecter</a></button>
         <% else  %>
           <a href="/dashboard">
           <%= cl_image_tag current_user.photo,crop: :fill,height: 40, class: "avatar"%>
           </a>
-         <button type="button" class="btn button-neige"> <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %></button>
+         <button type="button" class="button-default turquoise-light"> <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %></button>
           <% end %>
 
       </div>
