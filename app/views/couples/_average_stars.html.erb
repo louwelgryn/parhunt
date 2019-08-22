@@ -1,0 +1,19 @@
+<% if !couple.average.nil? %>
+    <% couple.average.to_i.times do %>
+      <i class="fas fa-star"></i>
+    <% end %>
+
+    <% if couple.average == (couple.average.to_i + 0.5) %>
+      <i class="fas fa-star-half-alt"></i>
+    <% end %>
+
+    <% if couple.average != (couple.average.to_i + 0.5) %>
+      <% (5 - couple.average.to_i).times do %>
+        <i class="far fa-star"></i>
+      <% end %>
+    <% else %>
+      <% (4 - couple.average.to_i).times do %>
+        <i class="far fa-star"></i>
+      <% end %>
+    <% end %>
+<% end %>
