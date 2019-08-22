@@ -1,130 +1,108 @@
-<h1 class="text-center titre-dashboard">MON DASHBOARD</h1>
+<div class="container">
+  <h1 class="text-center titre-dashboard my-5">MON DASHBOARD</h1>
 
-<h2 class="orange p-3">MON PROFIL</h2>
-<div class="profil dashboard-card">
-  <div>
-    <% if current_user.photo.file.nil? %>
-      <p>Ajoutez votre trombine :</p>
-    <% else %>
-      <%= cl_image_tag(current_user.photo, {class: "avatar-large"}) %>
-    <% end %>
-  </div>
+  <div class="dashboard-profiles">
+    <div>
+      <h2 class="orange m-4">MON PROFIL</h2>
+      <div class="booking-card">
+        <div class="profil">
 
-  <div class="profil-infos">
-    <p><%= current_user.fullname %>        <%= link_to '(Editer le profil)',  edit_user_registration_path %></p>
-    <% if current_user.couple.nil?  %>
-    <% else %>
-      <p>Vous parents ont été loué <%= @current_user.couple.bookings.length %> fois jusqu'ici</p>
-    <% end %>
-    <p>Vous avez loué <%= @current_user.bookings.length %> couple de parents jusqu'ici.</p>
-
-  </div>
-</div>
-
-<h2 class="orange p-3">MES PARENTS A LOUER</h2>
-
-<div>
-  <div>
-    <% if current_user.couple.nil? %>
-      <%= link_to 'Mettre mes parents à louer', new_couple_path %>
-    <% else %>
-      <%= cl_image_tag(current_user.couple.photo, {class: "avatar-big"}) %>
-  </div>
-
-  <div>
-    <p>Tes parents: les <%= current_user.couple.name %> 😊</p>
-
-    <% if current_user.couple.bookings.first.nil?  %>
-      <br>
-      <p>Pas encore de réservation pour tes parents!</p>
-
-    <% else %>
-
-      <p>Leurs réservations :</p>
-      <% current_user.couple.bookings.each do |booking| %>
-        <hr>
-        <p>Réservés par <%= booking.user.fullname %> pour le <%= booking.start_date %></p>
-        <%= simple_form_for [current_user.couple, booking] do |f| %>
-          <%= f.error_notification %>
-          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-          <div class="form-inputs">
-            <%= f.input :status, :collection => Booking::STATUS %>
+          <div class="profil-photo">
+            <% if current_user.photo.file.nil? %>
+              <p>Ajoutez votre trombine :</p>
+            <% else %>
+              <%= cl_image_tag(current_user.photo, :transformation=>[
+                  {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+                  {:width=>200, :crop=>"scale"}
+                ])
+              %>
+            <% end %>
           </div>
-          <div class="form-inputs">
-            <%= f.submit %>
+
+          <div class="profil-infos">
+            <h3><%= current_user.fullname %></h3>
+            <p><%= link_to 'Editer le profil', edit_user_registration_path, class: "btn btn-primary" %></p>
           </div>
-        <% end %>
-        <hr>
-      <% end %>
-    <% end %>
+
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="orange m-4">MES PARENTS</h2>
+
+      <div class="booking-card">
+        <div class="profil">
+          <div class="profil-photo">
+            <% if current_user.couple.nil? %>
+              <%= link_to 'Mettre mes parents à louer', new_couple_path %>
+            <% else %>
+              <%= cl_image_tag(current_user.couple.photo, :transformation=>[
+                  {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+                  {:width=>200, :crop=>"scale"}
+                ])
+              %>
+          </div>
+          <div class="profil-infos">
+              <h3>Les <%= current_user.couple.name %></h3>
+
+              <% unless current_user.couple.bookings.first.nil?  %>
+                <p>Leurs réservations :</p>
+                <% current_user.couple.bookings.each do |booking| %>
+                  <hr>
+                  <p>Réservés par <%= booking.user.fullname %> pour le <%= booking.start_date %></p>
+                  <%= simple_form_for [current_user.couple, booking] do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                    <div class="form-inputs">
+                      <%= f.input :status, :collection => Booking::STATUS %>
+                    </div>
+                    <div class="form-inputs">
+                      <%= f.submit %>
+                    </div>
+                  <% end %>
+                  <hr>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
-</div>
 
-<h2 class="orange p-3">MES RESERVATIONS</h2>
-
-<div class="dashboard-card">
-  <h3 class="rose">Réservations à venir</h3>
-  <ul>
-  <% @upcoming_bookings.each do |upcoming_booking| %>
-    <li>Les <%= upcoming_booking.couple.name %>, du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %>. Cette réservation est <%= upcoming_booking.status %>
-      <% if upcoming_booking.status == 'en attente' %>
-        <span>🙂</span>
-      <% elsif upcoming_booking.status == 'rejetée' %>
-        <span>😕</span>
-      <% else %>
-        <span>😊</span>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
-</div>
-
-<div class="dashboard-card">
-  <h3 class="rose">Réservations à évaluer</h3>
-
-  <% @old_bookings_to_review.each do |old_booking_to_review| %>
-
-    <p>Vous avez réservé avec <%= old_booking_to_review.couple.name %></p>
-    <p>Du <%= old_booking_to_review.start_date %> au <%= old_booking_to_review.end_date %></p>
-
-    <p>Reviewez ces parents:</p>
-    <%= simple_form_for [old_booking_to_review.couple, old_booking_to_review] do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <div class="form-inputs">
-          <p>Laissez leur un commentaire!</p>
-          <%= f.input :review_content, label: false %>
-        </div>
-        <div class="form-inputs">
-          <p>Notez les!</p>
-          <%= f.collection_radio_buttons :review_rating, [[0, '0'],[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last %>
-        </div>
-        <div class="form-inputs">
-          <%= f.submit %>
-        </div>
-      <% end %>
-    <% end %>
-</div>
-
-<div class="dashboard-card">
-  <h3 class="rose">Réservations passées</h3>
-
-  <% @reviewed_old_bookings.each do |reviewed_old_booking| %>
+  <h2 class="orange m-4">MES RESERVATIONS</h2>
 
   <div class="booking-card">
-    <div>
-      <%= cl_image_tag(reviewed_old_booking.couple.photo, {class: "avatar-large"}) %>
-    </div>
-
-    <div class="booking-card-infos">
-      <p>Vous avez réservé avec <%= reviewed_old_booking.couple.name %></p>
-      <p>Du <%= reviewed_old_booking.start_date %> au <%= reviewed_old_booking.end_date %></p>
-      <p>Votre review: </p>
-      <p>"<%= reviewed_old_booking.review_content %>"</p>
-      <p>Vous leur avez donné la note de <strong><%= reviewed_old_booking.review_rating %></strong></p>
-    </div>
+    <h3 class="rose">Réservations à venir</h3>
+    <ul>
+    <% @upcoming_bookings.each do |upcoming_booking| %>
+      <li>Les <%= upcoming_booking.couple.name %>, du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %><br><strong>Cette réservation est <%= upcoming_booking.status %></strong>
+        <% if upcoming_booking.status == 'en attente' %>
+          <span>🙂</span>
+        <% elsif upcoming_booking.status == 'rejetée' %>
+          <span>😕</span>
+        <% else %>
+          <span>😊</span>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
   </div>
 
-  <% end %>
+  <div class="booking-card">
+    <h3 class="rose">Réservations à évaluer</h3>
+    <%= render 'evaluation_form' %>
+  </div>
+
+  <div class="booking-card">
+    <h3 class="rose">Réservations passées</h3>
+
+    <% @reviewed_old_bookings.each do |reviewed_old_booking| %>
+
+      <p>Vous avez réservé les <%= reviewed_old_booking.couple.name %> du <%= reviewed_old_booking.start_date %> au <%= reviewed_old_booking.end_date %>.
+      <p>Votre évaluation : "<%= reviewed_old_booking.review_content %>". Vous leur avez donné la note de <strong><%= reviewed_old_booking.review_rating %></strong>.</p>
+
+    <% end %>
+  </div>
 </div>

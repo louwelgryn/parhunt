@@ -35,9 +35,6 @@
     </div>
   </div>
 
-
-
-
 <% if @error %>
   <p style="color: red"> Parents are already booked ! </p>
 <% end %>
@@ -46,7 +43,7 @@
   <p>Vous n'allez quand même pas louer vos propres parents...</p>
 <% else %>
 <div class="card-form-and-reviews">
-  <div class="card-form-simple">
+  <div class="card-form-simple pb-3">
     <%= render 'couples/form', booking: Booking.new %>
   </div>
 
