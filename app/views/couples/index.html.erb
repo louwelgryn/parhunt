@@ -2,23 +2,23 @@
 <div class="landing-cover">
   <h2 class= "main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
   <button type="button" class="button-default turquoise" >
-  <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
+    <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
   </button>
-<!-- =======
-<div class="main-title-card">
-  <div class="typed-text">
-    <h2 class= "title main-title">Trouvez des parents à louer pour <span class="typed"></span> </h2>
-  </div>
-  <div class="contain">
-    <button type="button" class="btn button-turquoise" >
-      <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
-    </button>
-  </div>
->>>>>>> master -->
 </div>
 
 <div id="scroll-to-all-parents" class="index-container">
   <div class="half-container">
+
+    <div class="row search-center">
+      <%= form_tag couples_path, method: :get, class: "form-inline my-2 my-lg-0 search-flex" do %>
+       <%= text_field_tag :query,
+        params[:query],
+          class: " form-control mr-sm-2",
+          placeholder: "Find a couple"
+        %>
+       <%= submit_tag "Search", class: "button-default vert my-2 my-sm-0" %>
+      <% end %>
+    </div>
 
     <div class="row">
       <% @couples.each do |couple| %>

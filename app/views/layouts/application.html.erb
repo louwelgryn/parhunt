@@ -17,6 +17,12 @@
   <body>
     <div class="navbar-lewagon">
       <p><%= link_to "PARHUNT", couples_path %> <i class="fas fa-female"></i><i class="fas fa-male"></i></p>
+
+
+      <div class="container-search">
+
+    </div>
+
       <div>
         <button type="button" class="button-default turquoise"><%= link_to "Voir les parents à louer", couples_path %></button>
         <% if current_user.nil? %>
@@ -26,7 +32,9 @@
           <% end %>
         <% end %>
         <% if current_user.nil? %>
-          <%= link_to "Se connecter", new_user_session_path, class: "btn button-rose"  %>
+
+          <%= link_to "Se connecter", new_user_session_path, class: "button-default rouge"  %>
+
         <% else  %>
           <%= link_to dashboard_path do %>
             <%= cl_image_tag current_user.photo,crop: :fill,height: 40, class: "avatar"%>

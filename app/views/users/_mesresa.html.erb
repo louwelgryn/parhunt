@@ -1,0 +1,39 @@
+<div class="parents">
+  <h2><strong>MES RESERVATIONS</strong></h2>
+
+    <div class="booking-card">
+      <h3>Réservations à venir</h3>
+        <% @upcoming_bookings.each do |upcoming_booking| %>
+        <li>
+
+            <hr>
+            <div class="card-product">
+              <%= cl_image_tag(upcoming_booking.couple.photo) %>
+                <div class="card-product-infos">
+                  <span class="rouge"><%= upcoming_booking.couple.name %></span>
+                    <p> Du <%= upcoming_booking.start_date %> au <%= upcoming_booking.end_date %>
+                    </p>
+                    <p><strong>Cette réservation est <%= upcoming_booking.status %></strong></p>
+
+            </div>
+            </li>
+        <% end %>
+
+
+    <div class="booking-card">
+      <h3>Réservations à évaluer</h3>
+      <%= render 'evaluation_form' %>
+    </div>
+
+    <div class="booking-card">
+      <h3>Réservations passées</h3>
+
+      <% @reviewed_old_bookings.each do |reviewed_old_booking| %>
+
+        <p>Vous avez réservé les <span class="rouge"><%= reviewed_old_booking.couple.name %></span> du <%= reviewed_old_booking.start_date %> au <%= reviewed_old_booking.end_date %>.
+        <p>Votre évaluation : "<%= reviewed_old_booking.review_content %>". Vous leur avez donné la note de <strong><%= reviewed_old_booking.review_rating %></strong>.</p>
+
+      <% end %>
+    </div>
+  </div>
+</div>

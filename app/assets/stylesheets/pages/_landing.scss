@@ -10,10 +10,16 @@
   padding-bottom: 320px;
   background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
   width: 100%;
+  text-align: center;
 }
 
 .rating {
   width: 100px;
+}
+
+.search-center {
+  width: 100%;
+  padding-left: 15px;
 }
 
 .bookings-count {
@@ -29,3 +35,4 @@
   font-weight: 400;
   text-align: center;
 }
+
