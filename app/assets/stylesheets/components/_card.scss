@@ -86,40 +86,41 @@
 }
 
 
-///// BEFORE //////////
-.card-parent-full-info-firstLine {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 500px;
-}
 
-.card-img-and-infos {
-  display: flex;
-  margin-bottom: 50px;
-  background-color: #E8E9F3;
-}
+// ///// BEFORE //////////
+// .card-parent-full-info-firstLine {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   width: 500px;
+// }
 
-.card-img-and-infos li {
-  margin-bottom: 5px;
-}
+// .card-img-and-infos {
+//   display: flex;
+//   margin-bottom: 50px;
+//   background-color: #E8E9F3;
+// }
 
-.card-form-and-reviews {
-  display: flex;
-}
+// .card-img-and-infos li {
+//   margin-bottom: 5px;
+// }
 
-.card-review-rating {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
-}
+// .card-form-and-reviews {
+//   display: flex;
+// }
 
-.card-category {
-  background-size: cover;
-  background-position: center;
-}
+// .card-review-rating {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-gap: 16px;
+// }
 
-.card-category {
-  color: white;
-}
+// .card-category {
+//   background-size: cover;
+//   background-position: center;
+// }
+
+// .card-category {
+//   color: white;
+// }
 
