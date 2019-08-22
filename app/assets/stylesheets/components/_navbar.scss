@@ -31,4 +31,28 @@
   color: #DC3545;
 }
 
+#avatar_notif {
+  display: flex;
+  position: relative;
+}
 
+#avatar_notif_badge {
+  // Position
+  height: 18px;
+  min-width: 18px;
+  top: 26px;
+  right: 26px;
+
+  // Layout
+  padding: 3px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Color & Font
+  background: #F44336;
+  position: absolute;
+  color: white;
+  font-size: 0.8rem;
+}
