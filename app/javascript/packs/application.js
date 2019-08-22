@@ -1,6 +1,7 @@
 import "bootstrap";
 import "../plugins/flatpickr"
 import 'mapbox-gl/dist/mapbox-gl.css';
+import '../plugins/smooth_scroll.js';
 
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css" // Note this is important!
@@ -17,7 +18,7 @@ initMapbox();
 import Typed from 'typed.js';
 
 const options = {
-  strings: ["un gouter", "un mariage","un enterrement","..."],
+  strings: ["un goûter", "un mariage","un enterrement","..."],
   loop: true,
   typeSpeed: 40
 }
