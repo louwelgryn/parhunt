@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_one :couple
   has_many :bookings
   mount_uploader :photo, PhotoUploader
+
+  def notifications
+    pending_bookings = self.couple.bookings.where("status = ?", "en attente")
+    return pending_bookings.length
+  end
 end
