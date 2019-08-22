@@ -3,7 +3,7 @@ class CouplesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     if params[:query].present?
-      @couples = Couple.where("name ILIKE ?", "%#{params[:query]}%")
+      @couples = Couple.where("name ILIKE ? OR best_quality ILIKE ? ", "%#{params[:query]}%")
     else
       @couples = Couple.geocoded
     end
@@ -22,6 +22,7 @@ class CouplesController < ApplicationController
     @old_bookings = @couple.bookings.where("end_date <= ?", Date.today)
     @reviewed_old_bookings = @old_bookings.where.not(review_content: nil)
   end
+
 
 
   def new
