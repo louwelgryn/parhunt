@@ -22,6 +22,10 @@ p {
   margin: 0px 0px 8px;
 }
 
+li {
+    list-style-type: none;
+}
+
 .strong {
   font-weight: bold;
 }
@@ -34,4 +38,12 @@ p {
   color: white;
   font-size: 64px;
   text-align: center;
+}
+
+.opacity-08 {
+  opacity: 0.8;
+}
+
+.rouge {
+  color: $rouge;
 }

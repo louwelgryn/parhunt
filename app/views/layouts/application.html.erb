@@ -22,14 +22,7 @@
       <div class="container-search">
 
     </div>
- <%= form_tag couples_path, method: :get, class: "form-inline my-2 my-lg-0 search-flex" do %>
-       <%= text_field_tag :query,
-        params[:query],
-          class: " form-control mr-sm-2",
-          placeholder: "Find a couple"
-        %>
-       <%= submit_tag "Search", class: " btn btn-outline-success my-2 my-sm-0" %>
-      <% end %>
+
       <div>
         <button type="button" class="button-default turquoise">
           <%= link_to "Voir les parents à louer", couples_path %>
@@ -44,8 +37,8 @@
 
         <% if current_user.nil? %>
 
-          <%= link_to "Se connecter", new_user_session_path, class: "btn button-rose"  %>
-      
+          <%= link_to "Se connecter", new_user_session_path, class: "button-default rouge"  %>
+
         <% else  %>
           <a href="/dashboard">
           <%= cl_image_tag current_user.photo,crop: :fill,height: 40, class: "avatar"%>

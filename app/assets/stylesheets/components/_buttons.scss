@@ -93,6 +93,36 @@
   color: $light-blue;
 }
 
+.button-default.vert {
+  background-color: $vert;
+  color: white;
+  font-weight: bold;
+  a:hover {
+    color: inherit;
+  }
+}
+
+.button-default.vert:hover {
+  background-color: white;
+  border-color: $vert;
+  color: $vert;
+}
+
+.button-default.white {
+  background-color: $light-gray;
+  color: black;
+  font-weight: bold;
+  a:hover {
+    color: inherit;
+  }
+}
+
+.button-default.white:hover {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}
+
 
 .button-orange {
   background-color: $orange;

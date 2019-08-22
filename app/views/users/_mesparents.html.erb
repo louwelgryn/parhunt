@@ -1,0 +1,87 @@
+<div class="parents">
+  <h2><strong>MES PARENTS</strong></h2>
+
+  <div>
+
+    <% if current_user.couple.nil? %>
+      <p class="button-default rouge"> <%= link_to 'Mettre mes parents à louer', new_couple_path %> </p>
+
+    <% else %>
+      <div>
+        <%= current_user.couple.name %>
+        <%= cl_image_tag(current_user.couple.photo, {class:"avatar"}) %>
+        <p class="button-default light-blue">Voir leur page</div>
+      </div>
+
+      <% unless current_user.couple.bookings.first.nil?  %>
+
+      <p>Leurs réservations :</p>
+
+      <% current_user.couple.bookings.each do |booking| %>
+
+        <hr>
+        <div class="card-product">
+          <%= cl_image_tag(booking.user.photo) %>
+            <div class="card-product-infos">
+              <span class="rouge"><%= booking.user.fullname %></span>
+                <p>Du <%= booking.start_date %> au <%= booking.end_date %>
+                </p>
+                <%= simple_form_for [current_user.couple, booking] do |f| %>
+                <%= f.error_notification %>
+                <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                <div class="form-inputs">
+                  <%= f.input :status, :collection => Booking::STATUS %>
+                </div>
+                <div class="form-inputs">
+                  <%= f.submit %>
+                </div>
+          <% end %>
+        </div>
+
+        </div>
+        <hr>
+      <% end %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+
+
+
+<!--       <div class="booking-card">
+        <div class="profil">
+          <div class="profil-photo">
+            <% if current_user.couple.nil? %>
+              <p class="button-default rouge"> <%= link_to 'Mettre mes parents à louer', new_couple_path %> </p>
+            <% else %>
+              <%= cl_image_tag(current_user.couple.photo, {class:"avatar-big"})
+              %>
+          </div>
+          <div class="profil-infos">
+              <h3>Les <%= current_user.couple.name %></h3>
+
+              <% unless current_user.couple.bookings.first.nil?  %>
+                <p>Leurs réservations :</p>
+                <% current_user.couple.bookings.each do |booking| %>
+                  <hr>
+                  <p>Réservés par <%= booking.user.fullname %> pour le <%= booking.start_date %></p>
+                  <%= simple_form_for [current_user.couple, booking] do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                    <div class="form-inputs">
+                      <%= f.input :status, :collection => Booking::STATUS %>
+                    </div>
+                    <div class="form-inputs">
+                      <%= f.submit %>
+                    </div>
+                  <% end %>
+                  <hr>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  </div>
