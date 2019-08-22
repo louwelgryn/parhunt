@@ -1,10 +1,14 @@
 import "bootstrap";
 import "../plugins/flatpickr"
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+
 import '../plugins/smooth_scroll.js';
 
+
 import flatpickr from "flatpickr"
-import "flatpickr/dist/flatpickr.min.css" // Note this is important!
+import "flatpickr/dist/flatpickr.min.css"
+
 
 flatpickr(".datepicker", {})
 
@@ -23,4 +27,19 @@ const options = {
   typeSpeed: 40
 }
 
-const typed = new Typed(".typed", options);
+if (document.querySelector(".typed")) {
+  const typed = new Typed(".typed", options);
+}
+
+const calculator = () => {
+  const start_date = document.querySelector(".start_date")
+  const end_date = document.querySelector(".end_date")
+  if (start_date) {
+    end_date.addEventListener('change', (event) => {
+   const reservation_price = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )* parseInt(event.target.dataset.price)
+    end_date.insertAdjacentHTML('afterEnd', `<p> your reservation total price is ${reservation_price} euros </p>`)
+    })
+  }
+}
+
+calculator();
