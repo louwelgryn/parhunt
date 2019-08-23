@@ -37,8 +37,11 @@ const calculator = () => {
   const end_date = document.querySelector(".end_date")
   if (start_date) {
     end_date.addEventListener('change', (event) => {
+      const nombre_de_jours = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )
+      const prix_par_jour = parseInt(event.target.dataset.price)
    const reservation_price = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )* parseInt(event.target.dataset.price)
-   document.querySelector(".booking_price").innerHTML =`Le prix total de votre réservation est de ${reservation_price} euros`
+   document.querySelector(".booking_price").innerHTML =` ${prix_par_jour}€ x ${nombre_de_jours} jours `
+   document.querySelector(".booking_reservation").innerHTML =`<strong>${reservation_price}€</strong> `
     })
   }
 }
@@ -46,27 +49,43 @@ const calculator = () => {
 calculator();
 
 
-/// RONDS NOTES ///
+/// CIRCLES ///
 
 
-let note = parseFloat(display.dataset.note);
-let offset = circumference * (10 - note) / 10;
+// let note = parseFloat(display.dataset.note);
+// let offset = circumference * (10 - note) / 10;
 
-const displays = document.querySelectorAll('.note-display');
-const transitionDuration = 900;
+// const displays = document.querySelectorAll('.note-display');
+// const transitionDuration = 900;
 
-displays.forEach(display => {
-  let progress = display.querySelector('.circle__progress--fill');
-  let radius = progress.r.baseVal.value;
-  let circumference = 2 * Math.PI * radius;
-  let note = parseFloat(display.dataset.note);
-  let offset = circumference * (10 - note) / 10;
+// displays.forEach(display => {
+//   let progress = display.querySelector('.circle__progress--fill');
+//   let radius = progress.r.baseVal.value;
+//   let circumference = 2 * Math.PI * radius;
+//   let note = parseFloat(display.dataset.note);
+//   let offset = circumference * (10 - note) / 10;
 
-  progress.style.setProperty('--initialStroke', circumference);
-  progress.style.setProperty('--transitionDuration', `${transitionDuration}ms`);
+//   progress.style.setProperty('--initialStroke', circumference);
+//   progress.style.setProperty('--transitionDuration', `${transitionDuration}ms`);
 
-+ setTimeout(() => progress.style.strokeDashoffset = offset, 100);
-});
+// + setTimeout(() => progress.style.strokeDashoffset = offset, 100);
+// });
 
+
+// /// TABS ///
+// (function($, document) {
+
+//       // get tallest tab__content element
+//       let height = -1;
+
+//     $('.tab__content').each(function() {
+//       height = height > $(this).outerHeight() ? height : $(this).outerHeight();
+//          $(this).css('position', 'absolute');
+//     });
+
+//       // set height of tabs + top offset
+//     $('[data-tabs]').css('min-height', height + 40 + 'px');
+
+// }(jQuery, document));
 
 

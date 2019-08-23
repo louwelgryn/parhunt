@@ -5,7 +5,7 @@
       <div class="show-information">
          <div class="show-name">
            <h1><strong>Les <%= @couple.name %></strong></h1>
-           <h3><%= @couple.price%>€/jour</h3>
+           <h3><%= @couple.price%> <i class="fas fa-euro-sign"></i>jour</h3>
         </div>
         <h4><i class="fas fa-map-marker-alt"></i> <%= @couple.address %></h4>
           <div class="show-details">
@@ -26,17 +26,20 @@
             <br>
             <div class="">
               <div class="">
+
+                <div  class= "booking_details"><p class="booking_price"></p><p class="booking_reservation"></p></div>
+
                 <%= render 'couples/form', booking: Booking.new %>
-                <div class="booking_price"></div>
-              </div>
+
                   <br>
               <div class="card-review-rating">
+                <h4>Ils ont reservé les <%= @couple.name %>:</h4>
                 <% @reviewed_old_bookings.each do |booking| %>
 
                 <div class="card-product2">
                   <%= cl_image_tag booking.user.photo, class: 'card-photo', height: 40, width: 40 %>
                   <div class="card-product-infos2">
-                    <p>Avis laissé le : <%= booking.end_date %></p> <br>
+                    <p>Avis laissé le : <%= booking.end_date %></p>
                     <h2><% booking.review_rating.times do %>
                          <i class="fas fa-star"></i>
                        <% end %>
