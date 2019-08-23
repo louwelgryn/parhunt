@@ -1,33 +1,36 @@
-  <div class="dashboard-cover">
-    <h1 class="text-center main-title">MON DASHBOARD</h1>
-      <p class="text-white"><%= current_user.fullname %></p>
-    <div d-flex>
-      <%= link_to 'Editer le profil', edit_user_registration_path, class: "button-default white opacity-08" %>
+
+
+
+
+
+
+<div class="dashboard-cover">
+  <h1 class="text-center main-title-dashboard">MON DASHBOARD</h1>
+    <p class="text-white"><%= current_user.fullname %></p>
+  <div d-flex>
+    <%= link_to 'Editer le profil', edit_user_registration_path, class: "button-default white opacity-08" %>
+  </div>
+  <br>
+  <%= render 'circles' %>
+</div>
+
+
+
+<div class="mx-auto">
+  <ul class="nav margin-left" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active tab-label" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">MES PARENTS</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link tab-label" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">MES RESERVATIONS</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active tab-content" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <%= render 'mes_parents' %>
     </div>
-    <br>
-    <%= render 'circles' %>
-  </div>
-
-<div class="container">
-  <%= render 'mesparents' %>
-</div>
-<div class="container">
-  <%= render 'mesresa' %>
-</div>
-
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#parents">Mes parents</a></li>
-  <li><a data-toggle="tab" href="#moi">Mes réservations</a></li>
-</ul>
-
-<div class="tab-content">
-  <div id="parents" class="tab-pane fade in active">
-    <h3>HOME</h3>
-    <p>Some content.</p>
-  </div>
-  <div id="moi" class="tab-pane fade">
-    <h3>Menu 1</h3>
-    <p>Some content in menu 1.</p>
+    <div class="tab-pane fade tab-content" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <%= render 'mes_reservations' %>
+    </div>
   </div>
 </div>
-

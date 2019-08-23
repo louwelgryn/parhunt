@@ -46,27 +46,43 @@ const calculator = () => {
 calculator();
 
 
-/// RONDS NOTES ///
+/// CIRCLES ///
 
 
-let note = parseFloat(display.dataset.note);
-let offset = circumference * (10 - note) / 10;
+// let note = parseFloat(display.dataset.note);
+// let offset = circumference * (10 - note) / 10;
 
-const displays = document.querySelectorAll('.note-display');
-const transitionDuration = 900;
+// const displays = document.querySelectorAll('.note-display');
+// const transitionDuration = 900;
 
-displays.forEach(display => {
-  let progress = display.querySelector('.circle__progress--fill');
-  let radius = progress.r.baseVal.value;
-  let circumference = 2 * Math.PI * radius;
-  let note = parseFloat(display.dataset.note);
-  let offset = circumference * (10 - note) / 10;
+// displays.forEach(display => {
+//   let progress = display.querySelector('.circle__progress--fill');
+//   let radius = progress.r.baseVal.value;
+//   let circumference = 2 * Math.PI * radius;
+//   let note = parseFloat(display.dataset.note);
+//   let offset = circumference * (10 - note) / 10;
 
-  progress.style.setProperty('--initialStroke', circumference);
-  progress.style.setProperty('--transitionDuration', `${transitionDuration}ms`);
+//   progress.style.setProperty('--initialStroke', circumference);
+//   progress.style.setProperty('--transitionDuration', `${transitionDuration}ms`);
 
-+ setTimeout(() => progress.style.strokeDashoffset = offset, 100);
-});
+// + setTimeout(() => progress.style.strokeDashoffset = offset, 100);
+// });
 
+
+// /// TABS ///
+// (function($, document) {
+
+//       // get tallest tab__content element
+//       let height = -1;
+
+//     $('.tab__content').each(function() {
+//       height = height > $(this).outerHeight() ? height : $(this).outerHeight();
+//          $(this).css('position', 'absolute');
+//     });
+
+//       // set height of tabs + top offset
+//     $('[data-tabs]').css('min-height', height + 40 + 'px');
+
+// }(jQuery, document));
 
 
