@@ -1,30 +1,29 @@
 <div class="landing-cover">
 
   <div class="text-centered">
-   <h2 class= "main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
+    <h2 class="main-title">Trouvez des parents à louer pour <span class="typed"></span></h2>
   </div>
-
-
 
   <button type="button" class="button-default turquoise" >
     <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
   </button>
 </div>
 
-<div id="scroll-to-all-parents" class="index-container">
-  <div class="half-container col">
+<div class="row search-center" id="scroll-to-all-parents">
+  <%= form_tag couples_path(anchor: "scroll-to-all-parents"), method: :get, class: "form-inline my-2 my-lg-0 search-flex search-wide" do %>
+    <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", id: "search-home", placeholder: "Trouvez un couple" %>
+    <%= submit_tag "Lancer la recherche", class: "button-default vert my-2 my-sm-0", id: "button-search" %>
+  <% end %>
+</div>
 
-    <div class="row search-center">
-      <%= form_tag couples_path(anchor: "scroll-to-all-parents"), method: :get, class: "form-inline my-2 my-lg-0 search-flex" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", id: "search-home", placeholder: "Trouvez un couple" %>
-        <%= submit_tag "Lancer la recherche", class: "button-default vert my-2 my-sm-0" %>
-      <% end %>
-    </div>
+<div  class="index-container">
+
+  <div class="half-container">
 
     <div class="row">
       <% @couples.each do |couple| %>
         <div class="col-6">
-          <div class="card mb-8">
+          <div class="card">
 
             <div class="card-photo-container">
               <%= cl_image_tag couple.photo, class: 'card-photo', height: 300, width: 400, crop: :fill %>
