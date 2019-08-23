@@ -14,7 +14,7 @@
       <%= link_to dashboard_path do %>
         <div>
           <div>
-             <%= cl_image_tag current_user.photo,crop: :fill, width: 1000, gravity: :auto, radius: "max", aspect_ratio: "1:1", class: "avatar" %>%>
+             <%= cl_image_tag current_user.photo,crop: :fill, width: 1000, gravity: :auto, radius: "max", aspect_ratio: "1:1", class: "avatar" %>
           </div>
           <% if current_user.notifications > 0 %>
             <div id="navbar-notif-badge">
