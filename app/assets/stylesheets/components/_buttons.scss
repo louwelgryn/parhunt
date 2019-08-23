@@ -24,6 +24,11 @@
   }
 }
 
+.button-default.turquoise.big {
+  height: 60px;
+  font-size: larger;
+}
+
 .button-default.turquoise:hover {
   background-color: $blanc-semi-transparent;
   border-color: $turquoise;
@@ -150,5 +155,5 @@
 }
 
 .welcome-button {
-  margin-top: 130px;
+  margin-top: 175px;
 }

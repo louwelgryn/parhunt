@@ -2,12 +2,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  // background: white;
   height: 64px;
   padding: 10px;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   z-index: 1;
   top: 0;
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+}
+
+.navbar-lewagon-white {
+  background-color: white;
 }
 
 .navbar-lewagon .avatar {

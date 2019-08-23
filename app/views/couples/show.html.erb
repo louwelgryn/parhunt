@@ -1,19 +1,20 @@
 
 <div class="container mt-5">
   <div class="show-container">
-    <%= cl_image_tag @couple.photo, height: 600, width: 600, crop: :fill, class: "show-image" %>
+    <%= cl_image_tag @couple.photo, height: 600, width: 600, class: "show-image" %>
       <div class="show-information">
          <div class="show-name">
-           <h1><strong>Les <%= @couple.name %></strong></h1>
-           <h3><%= @couple.price%> <i class="fas fa-euro-sign"></i>jour</h3>
+           <h1>Les <%= @couple.name %></h1>
+           <h3 class="show-price"><%= @couple.price%> €</i></h3>
+           <h4><%= @couple.address %></h4>
         </div>
-        <h4><i class="fas fa-map-marker-alt"></i> <%= @couple.address %></h4>
           <div class="show-details">
-             <p> <strong> Qualité:</strong> <%= @couple.best_quality %> </p>
-            <p> <strong> Description:</strong> <%= @couple.description %> </p>
-             <p> <strong> Pire défaut:</strong> <%= @couple.worst_default %> </p>
-             <p> <strong> Note moyenne:</strong> <span><%= render "average_stars", locals: { couple: @couple } %></span> </p>
-
+             <p> <strong></strong> "<%= @couple.description %> "</p> <br>
+             <p id="show-star"> <span ><%= render partial: "average_stars", locals: { couple: @couple } %></span> </p>  <br>
+             <div class="image-emoji">
+             <p><%= cl_image_tag('thumb-down_ffnoaz',width: 30, height: 30) %>   <%= @couple.worst_default %> </p>
+             <p> <%= cl_image_tag('thumbs-up_vigkhn',width: 30, height: 30) %>   <%= @couple.best_quality %> </p>
+             </div>
           </div>
 
           <% if @error %>
@@ -33,7 +34,7 @@
 
                   <br>
               <div class="card-review-rating">
-                <h4>Ils ont reservé les <%= @couple.name %>:</h4>
+
                 <% @reviewed_old_bookings.each do |booking| %>
 
                 <div class="card-product2">
