@@ -30,7 +30,7 @@
 }
 
 .button-default.turquoise:hover {
-  background-color: white;
+  background-color: $blanc-semi-transparent;
   border-color: $turquoise;
   color: $turquoise;
 }
@@ -45,7 +45,7 @@
 }
 
 .button-default.turquoise-light:hover {
-  background-color: white;
+  background-color: $blanc-semi-transparent;
   border-color: #DBE0DF;
   color: #A6ABAB;
   a:hover {
@@ -154,3 +154,6 @@
   width: 200px;
 }
 
+.welcome-button {
+  margin-top: 130px;
+}
