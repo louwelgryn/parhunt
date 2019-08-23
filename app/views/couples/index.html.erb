@@ -1,15 +1,17 @@
 <div class="landing-cover">
   <div class="text-centered">
-   <h2 class= "main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
+
+    <h2 class= "main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
+
    <button type="button" class="button-default turquoise welcome-button" >
-     <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
+    <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
    </button>
   </div>
 </div>
 
 <div class="row search-center" id="scroll-to-all-parents">
   <%= form_tag couples_path(anchor: "scroll-to-all-parents"), method: :get, class: "form-inline my-2 my-lg-0 search-flex search-wide" do %>
-    <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", id: "search-home", placeholder: "Trouvez un couple" %>
+    <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", id: "search-home", placeholder: "Trouver un couple" %>
     <%= submit_tag "Lancer la recherche", class: "button-default vert my-2 my-sm-0", id: "button-search" %>
   <% end %>
 </div>
