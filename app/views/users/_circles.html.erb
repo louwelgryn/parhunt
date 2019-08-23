@@ -1,36 +1,60 @@
-      <div display_container>
+<div display_container>
+  <ul class="display-container">
 
-          <li class="note-display" data-note="7">
-            <div class="circle">
-              <svg width="84" height="84" class="circle__svg">
-                <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
-                <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
-              </svg>
+    <% if @current_user.couple.bookings.nil? && @current_user.bookings.nil? %>
 
-              <div class="percent">
-                <span class="percent__int">
-                    <%= @bookings_to_validate.length %>
-                </span>
-                <span class="percent__dec">00</span>
-              </div>
-            </div>
+    <% else %>
 
-            <span class="label">Réservations en attente</span>
-          </li>
+      <li class="note-display" data-note=<%= @current_user.couple.bookings.length + @current_user.bookings.length %>>
+        <div class="circle">
+          <svg width="84" height="84" class="circle__svg">
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+            <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+          </svg>
 
-          <li class="note-display" data-note="2.00">
-            <div class="circle">
-              <svg width="84" height="84" class="circle__svg">
-                <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
-                <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
-              </svg>
+          <div class="percent">
+            <span class="percent__int"><%= @current_user.couple.bookings.length + @current_user.bookings.length %></span>
+            <span class="percent__dec"></span>
+          </div>
+        </div>
 
-              <div class="percent">
-                <span class="percent__int"> <%= @old_bookings_to_review.length %></span>
-                <span class="percent__dec">00</span>
-              </div>
-            </div>
+        <span class="label">RESERVATIONS EFFECTUEES</span>
+      </li>
 
-            <span class="label">Réservations à reviewer</span>
-          </li>
+    <% end %>
+
+    <li class="note-display" data-note=<%= @bookings_to_validate.length %>>
+      <div class="circle">
+        <svg width="84" height="84" class="circle__svg">
+          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+        </svg>
+
+        <div class="percent">
+          <span class="percent__int">
+            <%= @bookings_to_validate.length %>
+          </span>
+        </div>
       </div>
+
+      <span class="label">RESERVATIONS A VALIDER</span>
+    </li>
+
+    <li class="note-display" data-note=<%= @old_bookings_to_review.length %>>
+      <div class="circle">
+        <svg width="84" height="84" class="circle__svg">
+          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--path"></circle>
+          <circle cx="41" cy="41" r="38" class="circle__progress circle__progress--fill"></circle>
+        </svg>
+
+        <div class="percent">
+          <span class="percent__int">
+            <%= @old_bookings_to_review.length %>
+          </span>
+        </div>
+      </div>
+
+      <span class="label">RESERVATIONS A NOTER</span>
+    </li>
+  </ul>
+</div>

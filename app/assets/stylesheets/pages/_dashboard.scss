@@ -1,11 +1,35 @@
+.dashboard-parents-avatar {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
 
+.dashboard-parents-card {
+  display: flex;
+  align-items: center;
+  margin: 24px;
+}
+
+.dashboard-parents-info {
+  margin-left: 24px;
+}
 
 .dashboard-cover {
-  padding-top: 60px;
-  padding-bottom: 60px;
   background-image: url('https://images.unsplash.com/photo-1475414149481-0ee5f7a27ea1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+  background-position: center bottom;
   width: 100%;
   text-align: center;
+}
+
+.dashboard-cover-child {
+  background-color: rgba(255,255,255,0.2);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .main-title-dashboard {
@@ -37,23 +61,19 @@
    /* you can either manually set a min-height here or do it via JS ---> */
 }
 
+.tab-label.active {
+  border-bottom: solid 1px;
+}
+
 .tab {
   // float: left;
 }
 
 .tab-content {
-  height: 100vh;
+  // height: 100vh;
   margin-left: 100px;
 }
 
-.tab label {
-  margin-right: 20px;
-  position: relative;
-  top: 0;
-  cursor: pointer;
-  color: #333;
-   text-transform: uppercase;
-}
 
 .tab [type=radio] {
   display: none;
@@ -82,7 +102,6 @@
 
 .tab-label {
   font-size: 32px;
-  border-bottom: solid 1px;
   padding-left: 0px;
   padding-right: 0px;
   margin: 4px;
@@ -94,6 +113,11 @@
 .display-container {
   margin: auto;
   display: flex;
+  justify-content: center;
+}
+
+ul.display-container {
+  padding: 0;
 }
 
 .note-display {
@@ -115,7 +139,8 @@ li .label{
 }
 
 .note-display:nth-child(1) .circle__progress { stroke: $violet; }
-.note-display:nth-child(2) .circle__progress { stroke: $rouge; }
+.note-display:nth-child(2) .circle__progress { stroke: $orange; }
+.note-display:nth-child(3) .circle__progress { stroke: $rouge; }
 
 .circle {
   position: relative;
@@ -126,7 +151,6 @@ li .label{
   top: 50%;
   left: 50%;
   position: absolute;
-  font-weight: bold;
   text-align: center;
   line-height: 28px;
   transform: translate(-50%, -50%);
@@ -155,56 +179,3 @@ li .label{
 }
 
 // TEST
-
-
-// OLD
-
-// .dashboard-card {
-//   background: white;
-//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-//   border-radius: 3px;
-//   margin: 16px;
-//   padding: 24px;
-// }
-
-// .bookings-card {
-//   display: flex;
-// }
-
-// .booking-card-infos {
-// }
-
-// .profil {
-//   display: flex;
-//   margin-left: 24px;
-// }
-
-// .profil-infos {
-//   margin-left: 8px;
-// }
-
-// .titre-dashboard {
-//   font-weight: bold;
-//   font-size: 42px;
-//   color: $orange;
-// }
-
-// .dashboard-profiles {
-//   display: flex;
-// }
-
-// .DB-ratings {
-//   input {
-//     margin: 8px;
-//   }
-// }
-// // .form-inputs span {
-// //   display: inline-block;
-// //   margin: 24px;
-// // }
-
-
-// body {
-//   font-family: 'Montserrat', sans-serif;
-//   color: red;
-// }
