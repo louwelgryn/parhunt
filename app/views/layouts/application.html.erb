@@ -15,50 +15,17 @@
   </head>
 
   <body>
-    <div class="navbar-lewagon">
-
-      <p><%= link_to "PARHUNT", couples_path(anchor: "scroll-to-all-parents") %> <i class="fas fa-female"></i><i class="fas fa-male"></i></p>
-
-      <div id="navbar-btns-avatar">
-        <button type="button" class="button-default turquoise button-navbar"><%= link_to "Voir les parents à louer", couples_path %></button>
-        <% if current_user && current_user.couple.nil? %>
-          <button type="button" class="button-default turquoise button-navbar"><%= link_to "Louez vos parents", new_couple_path %></button>
-        <% end %>
-        <% if current_user.nil? %>
-          <button type="button" class="button-default rouge button-navbar"><%= link_to "Se connecter", new_user_session_path %></button>
-        <% else  %>
-          <button type="button" class="button-default turquoise-light button-navbar"> <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %></button>
-          <%= link_to dashboard_path do %>
-            <div>
-              <div>
-                <%= cl_image_tag current_user.photo,crop: :fill,height: 40, class: "avatar" %>
-              </div>
-              <% if current_user.notifications > 0 %>
-                <div id="navbar-notif-badge">
-                  <%= current_user.notifications %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
+    <%= render 'shared/navbar' %>
     <div class=" min-height">
       <%= yield %>
     </div>
 
-    <div class="footer">
-      <div class="footer-links">
-        <a href="https://github.com/louwelgryn/parhunt" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/lewagonparis/?hl=fr" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://fr-fr.facebook.com/lewagon/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/school/le-wagon/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <div class="footer-copyright">
-        With <i class="fas fa-heart"></i> from Parhunt
-      </div>
-    </div>
+    <%= render 'shared/footer' %>
+
+
+
+
+
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
