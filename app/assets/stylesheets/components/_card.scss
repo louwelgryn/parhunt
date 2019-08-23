@@ -42,23 +42,24 @@
 }
 
 .double-info {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .card-info-footer:before {
-    content: '';
-    width: 100%;
-    border-bottom: solid 1px $light-gray;
-    position: absolute;
-    left: 0;
-    top: 0px;
-    z-index: 1;
+  content: '';
+  width: 100%;
+  border-bottom: solid 1px #e3e8e6;
+  position: absolute;
+  left: 0;
+  top: -8px;
+  z-index: 1;
 }
 
 .card-info-footer {
-  padding: 11px 0 11px 0;
+  padding: 16px 0 11px 0;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -70,6 +71,7 @@
 
 .card-info-footer .box-right {
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   width: 150px;
 }
@@ -117,8 +119,6 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
-
-
 
 // ///// BEFORE //////////
 // .card-parent-full-info-firstLine {
