@@ -24,6 +24,11 @@
   }
 }
 
+.button-default.turquoise.big {
+  height: 60px;
+  font-size: larger;
+}
+
 .button-default.turquoise:hover {
   background-color: white;
   border-color: $turquoise;

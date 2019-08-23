@@ -40,7 +40,7 @@ const calculator = () => {
       const nombre_de_jours = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )
       const prix_par_jour = parseInt(event.target.dataset.price)
    const reservation_price = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )* parseInt(event.target.dataset.price)
-   document.querySelector(".booking_price").innerHTML =` ${prix_par_jour}€ x ${nombre_de_jours} jours `
+   document.querySelector(".booking_price").innerHTML =` ${prix_par_jour} € x ${nombre_de_jours} jours `
    document.querySelector(".booking_reservation").innerHTML =`<strong>${reservation_price}€</strong> `
     })
   }
