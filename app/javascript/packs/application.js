@@ -67,7 +67,6 @@ displays.forEach(display => {
   setTimeout(() => progress.style.strokeDashoffset = offset, 100);
 });
 
-
 // let note = parseFloat(display.dataset.note);
 // let offset = circumference * (10 - note) / 10;
 
