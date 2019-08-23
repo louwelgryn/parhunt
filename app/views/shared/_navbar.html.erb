@@ -2,7 +2,7 @@
   <p><%= link_to "PARHUNT", couples_path %> <i class="fas fa-female"></i><i class="fas fa-male"></i></p>
   <div id="navbar-btns-avatar">
     <button type="button" class="button-default turquoise" >
-      <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
+      <span data-scroll > <%=link_to 'Voir les parents à louer',couples_path(anchor: "scroll-to-all-parents")   %> </span>
     </button>
     <% if current_user && current_user.couple.nil? %>
       <button type="button" class="button-default turquoise button-navbar"><%= link_to "Louez vos parents", new_couple_path %></button>
