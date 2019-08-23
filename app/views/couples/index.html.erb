@@ -10,7 +10,7 @@
 </div>
 
 <div class="row search-center" id="scroll-to-all-parents">
-  <%= form_tag couples_path, method: :get, class: "form-inline my-2 my-lg-0 search-flex search-wide" do %>
+  <%= form_tag couples_path(anchor: "scroll-to-all-parents"), method: :get, class: "form-inline my-2 my-lg-0 search-flex search-wide" do %>
     <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", id: "search-home", placeholder: "Trouvez un couple" %>
     <%= submit_tag "Lancer la recherche", class: "button-default vert my-2 my-sm-0", id: "button-search" %>
   <% end %>
@@ -71,6 +71,6 @@
     </div>
   </div>
 
-  <div id="map" style="width: 100%; height: 100vh; position: sticky; top: 0; margin-left: 30px" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="col" id="map" style="width: 100%; height: 100vh; position: sticky; top: 0; margin-left: 30px" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
