@@ -7,7 +7,7 @@
       <div class="dashboard-parents-avatar" style="background-image: url('<%= cl_image_path current_user.couple.photo, gravity: :face; %>'); background-repeat:no-repeat;"></div>
       <div class="dashboard-parents-info">
         <h2>Les <%= current_user.couple.name %></h2>
-        <p class="button-default light-blue">Voir leur page</p>
+        <p class="button-default light-blue"><%= link_to 'Voir leur page', couple_path(current_user.couple) %></p>
       </div>
     </div>
 

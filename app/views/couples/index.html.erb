@@ -55,7 +55,7 @@
                     <h2><%= couple.price %> €</h2>
                   </div>
                   <div class="rating float-right">
-                    <span><%= render partial: "average_stars", locals: { couple: couple } %></span>
+                    <span><%= render partial: "couples/average_stars", locals: { couple: couple } %></span>
                   </div>
                   <div class="box-right">
                     <span class="bookings-count light-blue small"><%= couple.bookings.count %></span>
