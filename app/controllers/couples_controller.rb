@@ -3,7 +3,8 @@ class CouplesController < ApplicationController
 
   def index
     if params[:query].present?
-      @couples = Couple.where("name ILIKE ? OR best_quality ILIKE ? ", "%#{params[:query]}%")
+      sql_query = "name ILIKE :query OR best_quality ILIKE :query"
+      @couples = Couple.where(sql_query, query: "%#{params[:query]}%")
     else
       @couples = Couple.geocoded
     end
