@@ -9,14 +9,12 @@
            <h4><%= @couple.address %></h4>
         </div>
           <div class="show-details">
-
              <p> <strong></strong> "<%= @couple.description %> "</p> <br>
              <p id="show-star"> <span ><%= render partial: "average_stars", locals: { couple: @couple } %></span> </p>  <br>
              <div class="image-emoji">
              <p><%= cl_image_tag('thumb-down_ffnoaz',width: 30, height: 30) %>   <%= @couple.worst_default %> </p>
              <p> <%= cl_image_tag('thumbs-up_vigkhn',width: 30, height: 30) %>   <%= @couple.best_quality %> </p>
              </div>
-
           </div>
 
           <% if @error %>
