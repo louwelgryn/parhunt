@@ -43,7 +43,7 @@ const calculator = () => {
       const nombre_de_jours = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )
       const prix_par_jour = parseInt(event.target.dataset.price)
    const reservation_price = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )* parseInt(event.target.dataset.price)
-   document.querySelector(".booking_price").innerHTML =` ${prix_par_jour}€ x ${nombre_de_jours} jours `
+   document.querySelector(".booking_price").innerHTML =` ${prix_par_jour} € x ${nombre_de_jours} jours `
    document.querySelector(".booking_reservation").innerHTML =`<strong>${reservation_price}€</strong> `
     })
   }
@@ -53,6 +53,22 @@ calculator();
 
 
 /// CIRCLES ///
+
+const displays = document.querySelectorAll('.note-display');
+const transitionDuration = 900;
+
+displays.forEach(display => {
+  let progress = display.querySelector('.circle__progress--fill');
+  let radius = progress.r.baseVal.value;
+  let circumference = 2 * Math.PI * radius;
+  let note = parseFloat(display.dataset.note);
+  let offset = circumference * (10 - note) / 10;
+
+  progress.style.setProperty('--transitionDuration', `${transitionDuration}ms`);
+  progress.style.setProperty('--initialStroke', circumference);
+
+  setTimeout(() => progress.style.strokeDashoffset = offset, 100);
+});
 
 
 // let note = parseFloat(display.dataset.note);

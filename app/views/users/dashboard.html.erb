@@ -1,17 +1,13 @@
-
-
-
-
-
-
 <div class="dashboard-cover">
-  <h1 class="text-center main-title-dashboard">MON DASHBOARD</h1>
-    <p class="text-white"><%= current_user.fullname %></p>
-  <div d-flex>
-    <%= link_to 'Editer le profil', edit_user_registration_path, class: "button-default white opacity-08" %>
+  <div class="dashboard-cover-child">
+    <h1 class="text-center main-title-dashboard">MON DASHBOARD</h1>
+      <p class="text-white"><%= current_user.fullname %></p>
+    <div d-flex>
+      <%= link_to 'Editer le profil', edit_user_registration_path, class: "button-default white opacity-08" %>
+    </div>
+    <br>
+    <%= render 'circles' %>
   </div>
-  <br>
-  <%= render 'circles' %>
 </div>
 
 
