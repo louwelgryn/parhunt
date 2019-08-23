@@ -10,6 +10,9 @@ import '../plugins/smooth_scroll.js';
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css"
 
+import { initUpdateNavbarOnScroll } from '../components/navbar';
+initUpdateNavbarOnScroll();
+
 
 flatpickr(".datepicker", {})
 

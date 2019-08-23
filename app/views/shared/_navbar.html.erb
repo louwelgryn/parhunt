@@ -1,0 +1,28 @@
+<div class="navbar-lewagon">
+  <p><%= link_to "PARHUNT", couples_path %> <i class="fas fa-female"></i><i class="fas fa-male"></i></p>
+  <div id="navbar-btns-avatar">
+    <button type="button" class="button-default turquoise" >
+      <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
+    </button>
+    <% if current_user && current_user.couple.nil? %>
+      <button type="button" class="button-default turquoise button-navbar"><%= link_to "Louez vos parents", new_couple_path %></button>
+    <% end %>
+    <% if current_user.nil? %>
+      <button type="button" class="button-default rouge button-navbar"><%= link_to "Se connecter", new_user_session_path %></button>
+    <% else  %>
+      <button type="button" class="button-default turquoise-light button-navbar"> <%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %></button>
+      <%= link_to dashboard_path do %>
+        <div>
+          <div>
+            <%= cl_image_tag current_user.photo,crop: :fill,height: 40, class: "avatar" %>
+          </div>
+          <% if current_user.notifications > 0 %>
+            <div id="navbar-notif-badge">
+              <%= current_user.notifications %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
