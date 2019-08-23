@@ -59,8 +59,8 @@ displays.forEach(display => {
   let progress = display.querySelector('.circle__progress--fill');
   let radius = progress.r.baseVal.value;
   let circumference = 2 * Math.PI * radius;
-+ let note = parseFloat(display.dataset.note);
-+ let offset = circumference * (10 - note) / 10;
+  let note = parseFloat(display.dataset.note);
+  let offset = circumference * (10 - note) / 10;
 
   progress.style.setProperty('--initialStroke', circumference);
   progress.style.setProperty('--transitionDuration', `${transitionDuration}ms`);
