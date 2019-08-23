@@ -1,4 +1,20 @@
+.dashboard-parents-avatar {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
 
+.dashboard-parents-card {
+  display: flex;
+  align-items: center;
+  margin: 24px;
+}
+
+.dashboard-parents-info {
+  margin-left: 24px;
+}
 
 .dashboard-cover {
   padding-top: 60px;
@@ -42,7 +58,7 @@
 }
 
 .tab-content {
-  height: 100vh;
+  // height: 100vh;
   margin-left: 100px;
 }
 

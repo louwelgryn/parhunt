@@ -1,44 +1,38 @@
 <div class="parents">
-  <h2><strong>MES PARENTS</strong></h2>
-
 
   <% if current_user.couple.nil? %>
     <p class="button-default rouge"> <%= link_to 'Mettre mes parents à louer', new_couple_path %></p>
-
   <% else %>
-    <div>
-      <%= current_user.couple.name %>
-      <%= cl_image_tag(current_user.couple.photo, {class:"avatar"}) %>
-      <p class="button-default light-blue">Voir leur page</p>
+    <div class="dashboard-parents-card">
+      <div class="dashboard-parents-avatar" style="background-image: url('<%= cl_image_path current_user.couple.photo, gravity: :face; %>'); background-repeat:no-repeat;"></div>
+      <div class="dashboard-parents-info">
+        <h2>Les <%= current_user.couple.name %></h2>
+        <p class="button-default light-blue">Voir leur page</p>
+      </div>
     </div>
 
-    <% unless current_user.couple.bookings.any?  %>
+    <% if current_user.couple.bookings.any?  %>
 
-      <p>Leurs réservations :</p>
+      <h2>Leurs réservations :</h2>
 
       <% current_user.couple.bookings.each do |booking| %>
-
-        <hr>
         <div class="card-product">
           <%= cl_image_tag(booking.user.photo) %>
           <div class="card-product-infos">
             <span class="rouge"><%= booking.user.fullname %></span>
-            <p>Du <%= booking.start_date %> au <%= booking.end_date %>
-            </p>
+            <p>Du <%= booking.start_date %> au <%= booking.end_date %></p>
             <%= simple_form_for [current_user.couple, booking] do |f| %>
               <%= f.error_notification %>
               <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
               <div class="form-inputs">
-                <%= f.input :status, :collection => Booking::STATUS %>
+                <%= f.input :status, :collection => Booking::STATUS, label: "Statut :" %>
               </div>
               <div class="form-inputs">
                 <%= f.submit %>
               </div>
             <% end %>
           </div>
-
         </div>
-        <hr>
       <% end %>
     <% end %>
   <% end %>
