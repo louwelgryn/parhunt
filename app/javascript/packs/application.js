@@ -38,7 +38,7 @@ const calculator = () => {
   if (start_date) {
     end_date.addEventListener('change', (event) => {
    const reservation_price = ((Date.parse(end_date.value) - Date.parse(start_date.value))/ 86400000 )* parseInt(event.target.dataset.price)
-   document.querySelector(".booking_price").innerHTML =`your reservation total price is ${reservation_price} euros`
+   document.querySelector(".booking_price").innerHTML =`Le prix total de votre réservation est de ${reservation_price} euros`
     })
   }
 }

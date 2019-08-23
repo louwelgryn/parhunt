@@ -21,6 +21,12 @@ class CouplesController < ApplicationController
     @booking = Booking.new
     @old_bookings = @couple.bookings.where("end_date <= ?", Date.today)
     @reviewed_old_bookings = @old_bookings.where.not(review_content: nil)
+    @markers =
+      {
+        lat: @couple.latitude,
+        lng: @couple.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { couple: @couple })
+      }
   end
 
 

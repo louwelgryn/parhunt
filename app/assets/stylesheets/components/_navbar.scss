@@ -28,7 +28,33 @@
   margin: 0;
   font-weight: bold;
   font-size: 24px;
-  color: #DC3545;
+  color: $rouge;
 }
 
+#navbar-btns-avatar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
+#navbar-notif-badge {
+  height: 18px;
+  min-width: 18px;
+  top: 26px;
+  right: 26px;
+  padding: 3px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $rouge;
+  position: absolute;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.button-navbar {
+  margin: 0 4px;
+}

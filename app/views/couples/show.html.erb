@@ -4,18 +4,16 @@
     <%= cl_image_tag @couple.photo, height: 600, width: 600, crop: :fill, class: "show-image" %>
       <div class="show-information">
          <div class="show-name">
-          <h1><strong>Les <%= @couple.name %></strong></h3>
-          <h3><%= @couple.nickname %></h1>
-          <h4><%= @couple.price%>€/jour</h4>
+           <h1><strong>Les <%= @couple.name %></strong></h1>
+           <h3><%= @couple.price%>€/jour</h3>
         </div>
         <h4><i class="fas fa-map-marker-alt"></i> <%= @couple.address %></h4>
           <div class="show-details">
-              <strong> Talents:</strong> <%= @couple.skills %>
-              <strong> Qualité:</strong> <%= @couple.best_quality %>
-              <strong> Description:</strong> <%= @couple.description %>
-              <strong> Pire défaut:</strong> <%= @couple.worst_default %>
-              <strong> Propriétaire:</strong> <%= @couple.user.fullname %>
+             <p> <strong> Qualité:</strong> <%= @couple.best_quality %> </p>
+            <p> <strong> Description:</strong> <%= @couple.description %> </p>
+             <p> <strong> Pire défaut:</strong> <%= @couple.worst_default %> </p>
           </div>
+
           <% if @error %>
             <p style="color: red"> Ces parents sont déjà réservés sur cette date ! </p>
           <% end %>
@@ -23,25 +21,30 @@
           <% if @couple.user == current_user %>
             <p>Vous n'allez quand même pas louer vos propres parents...</p>
           <% else %>
-
+            <br>
             <div class="">
               <div class="">
                 <%= render 'couples/form', booking: Booking.new %>
+                <div class="booking_price"></div>
               </div>
-
+                  <br>
               <div class="card-review-rating">
                 <% @reviewed_old_bookings.each do |booking| %>
-                  <ul>
-                    <li>Avis laissé le : <%= booking.end_date %><br/>
-                      <% booking.review_rating.times do %>
+
+                <div class="card-product2">
+                  <%= cl_image_tag booking.user.photo, class: 'card-photo', height: 40, width: 40 %>
+                  <div class="card-product-infos2">
+                    <p>Avis laissé le : <%= booking.end_date %></p> <br>
+                    <h2><% booking.review_rating.times do %>
                          <i class="fas fa-star"></i>
                        <% end %>
                        <% (5 - booking.review_rating).times do %>
                          <i class="far fa-star"></i>
-                      <% end %>
-                    </li>
-                     <p>Commentaire : <%= booking.review_content %></p>
-                  </ul>
+                      <% end %></h2>
+                    <p> "<%= booking.review_content %> "</p>
+                  </div>
+                </div>
+
                 <% end %>
               </div>
             <% end %>
