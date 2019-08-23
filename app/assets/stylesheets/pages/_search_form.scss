@@ -1,0 +1,24 @@
+.was-validated .form-control:valid, .form-control.is-valid {
+    border-color: #ced4da;
+    background-image:none;
+}
+
+#search-home {
+  border-radius: 50px;
+  flex-grow: 1;
+}
+
+.search-wide {
+  width: 100%;
+  justify-content: space-around;
+  padding-left: 20px;
+}
+
+.search-center {
+  width: 100%;
+  padding: 15px;
+}
+
+#button-search {
+  flex-shrink: 1;
+}
