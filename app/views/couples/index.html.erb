@@ -2,13 +2,10 @@
 
   <div class="text-centered">
    <h2 class= "main-title">Trouvez des parents à louer pour  <span class="typed"></span> </h2>
+   <button type="button" class="button-default turquoise welcome-button" >
+     <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
+   </button>
   </div>
-
-
-
-  <button type="button" class="button-default turquoise" >
-    <a data-scroll href="#scroll-to-all-parents">Voir les parents à louer</a>
-  </button>
 </div>
 
 <div id="scroll-to-all-parents" class="index-container">
@@ -55,12 +52,13 @@
                     <%= cl_image_tag couple.user.photo, crop: :fill, height: 40, gravity: 'face', class: "card-user-photo avatar-bordered" %>
                     <h2><%= couple.price %> €</h2>
                   </div>
+                  <div class="rating float-right">
+                    <span><%= render partial: "average_stars", locals: { couple: couple } %></span>
+                  </div>
                   <div class="box-right">
-                    <div class="rating float-right">
-                      <span><%= render partial: "average_stars", locals: { couple: couple } %></span>
-                    </div>
                     <span class="bookings-count light-blue small"><%= couple.bookings.count %></span>
                   </div>
+
                 </div>
               </div>
 
