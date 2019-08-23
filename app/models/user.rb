@@ -9,7 +9,11 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   def notifications
-    pending_bookings = self.couple.bookings.where("status = ?", "en attente")
-    return pending_bookings.length
+    if self.couple
+      pending_bookings = self.couple.bookings.where("status = ?", "en attente")
+      return pending_bookings.length
+    else
+      return 0
+    end
   end
 end
