@@ -1,5 +1,5 @@
-<div class="navbar-lewagon">
-  <p><%= link_to "PARHUNT", couples_path %> <i class="fas fa-female"></i><i class="fas fa-male"></i></p>
+<div class="navbar-lewagon navbar-lewagon-white">
+  <p><%= link_to "PARHUNT", couples_path(anchor: "scroll-to-all-parents" ) %> <i class="fas fa-female"></i><i class="fas fa-male"></i></p>
   <div id="navbar-btns-avatar">
     <button type="button" class="button-default turquoise" >
       <span data-scroll > <%=link_to 'Voir les parents à louer',couples_path(anchor: "scroll-to-all-parents")   %> </span>
@@ -14,7 +14,7 @@
       <%= link_to dashboard_path do %>
         <div>
           <div>
-            <%= cl_image_tag current_user.photo,crop: :fill,height: 40, class: "avatar" %>
+             <%= cl_image_tag current_user.photo,crop: :fill, width: 1000, gravity: :auto, radius: "max", aspect_ratio: "1:1", class: "avatar" %>%>
           </div>
           <% if current_user.notifications > 0 %>
             <div id="navbar-notif-badge">
